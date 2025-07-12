@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Skill Swap Platform Design System - Professional, GitHub/LinkedIn inspired */
+
+@layer base {
+  :root {
+    /* Core backgrounds */
+    --background: 0 0% 100%;
+    --foreground: 220 13% 18%;
+
+    /* Card and surface colors */
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+    --card-hover: 210 40% 98%;
+
+    /* Popover and overlay colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* Professional blue primary (LinkedIn inspired) */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 221 83% 48%;
+    --primary-light: 221 83% 95%;
+
+    /* Secondary grays (GitHub inspired) */
+    --secondary: 210 17% 96%;
+    --secondary-foreground: 220 13% 18%;
+    --secondary-hover: 210 17% 91%;
+
+    /* Muted colors for subtle elements */
+    --muted: 210 17% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent colors */
+    --accent: 210 17% 96%;
+    --accent-foreground: 220 13% 18%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+
+    /* Interactive elements */
+    --hover: 210 17% 91%;
+    --active: 210 17% 86%;
+
+    /* Skill badges */
+    --skill-offered: 142 76% 95%;
+    --skill-offered-foreground: 142 76% 26%;
+    --skill-wanted: 38 92% 95%;
+    --skill-wanted-foreground: 38 92% 30%;
+
+    /* Rating stars */
+    --rating: 38 92% 50%;
+
+    /* Shadows for depth */
+    --shadow-sm: 0 1px 2px 0 hsl(220 13% 18% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 13% 18% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(220 13% 18% / 0.1);
+
+    /* Animation and transitions */
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode - professional dark theme */
+    --background: 220 13% 9%;
+    --foreground: 210 40% 98%;
+    --card-hover: 220 13% 12%;
+
+    /* Card and surface colors */
+    --card: 220 13% 11%;
+    --card-foreground: 210 40% 98%;
+
+    /* Popover and overlay colors */
+    --popover: 220 13% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary blue for dark mode */
+    --primary: 221 83% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 221 83% 55%;
+    --primary-light: 221 83% 15%;
+
+    /* Secondary grays for dark mode */
+    --secondary: 220 13% 16%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-hover: 220 13% 20%;
+
+    /* Muted colors for dark mode */
+    --muted: 220 13% 16%;
+    --muted-foreground: 220 9% 65%;
+
+    /* Accent colors for dark mode */
+    --accent: 220 13% 16%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Status colors for dark mode */
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 60%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Borders and inputs for dark mode */
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 221 83% 60%;
+
+    /* Interactive elements for dark mode */
+    --hover: 220 13% 16%;
+    --active: 220 13% 20%;
+
+    /* Skill badges for dark mode */
+    --skill-offered: 142 76% 15%;
+    --skill-offered-foreground: 142 76% 70%;
+    --skill-wanted: 38 92% 15%;
+    --skill-wanted-foreground: 38 92% 70%;
+
+    /* Rating stars for dark mode */
+    --rating: 38 92% 60%;
+
+    /* Shadows for dark mode */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.4);
+
+    /* Sidebar colors for dark mode */
+    --sidebar-background: 220 13% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 221 83% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 13% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 13% 20%;
+    --sidebar-ring: 221 83% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

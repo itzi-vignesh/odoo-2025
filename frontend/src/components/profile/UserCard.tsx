@@ -8,24 +8,30 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 interface UserCardProps {
   user: {
     id: string;
-    name: string;
+    name?: string;
+    username?: string;
     avatar?: string;
-    location: string;
-    rating: number;
-    totalSwaps: number;
-    skillsOffered: string[];
-    skillsWanted: string[];
-    availability: 'available' | 'busy';
-    bio: string;
-    badges: string[];
-    lastActive: string;
+    location?: string;
+    rating?: number;
+    totalSwaps?: number;
+    total_completed_swaps?: number;
+    skillsOffered?: any[];
+    skills_offered?: any[];
+    skillsWanted?: any[];
+    skills_wanted?: any[];
+    availability?: 'available' | 'busy';
+    bio?: string;
+    badges?: any[];
+    lastActive?: string;
+    joined_at?: string;
   };
   currentUser: any;
   onRequestSwap: (userId: string) => void;
   onViewProfile: (userId: string) => void;
+  isAuthenticated?: boolean;
 }
 
-export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: UserCardProps) {
+export function UserCard({ user, currentUser, onRequestSwap, onViewProfile, isAuthenticated = true }: UserCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const renderStars = (rating: number) => {
@@ -41,9 +47,56 @@ export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: Us
     ));
   };
 
-  const getAvailabilityColor = (availability: string) => {
-    return availability === 'available' ? 'bg-success' : 'bg-warning';
+  const getAvailabilityColor = (availability?: string) => {
+    return availability === 'busy' ? 'bg-warning' : 'bg-success';
   };
+
+  const getAvailabilityText = (availability?: string) => {
+    switch(availability) {
+      case 'weekdays': return 'Weekdays';
+      case 'weekends': return 'Weekends';
+      case 'evenings': return 'Evenings';
+      case 'mornings': return 'Mornings';
+      case 'flexible': return 'Flexible';
+      case 'busy': return 'Busy';
+      default: return 'Available';
+    }
+  };
+
+  // Helper functions to get data from either format
+  const getSkillsOffered = () => {
+    const skills = user.skillsOffered || user.skills_offered || [];
+    return skills.map((skill: any) => typeof skill === 'string' ? skill : skill.skill_name);
+  };
+
+  const getSkillsWanted = () => {
+    const skills = user.skillsWanted || user.skills_wanted || [];
+    return skills.map((skill: any) => typeof skill === 'string' ? skill : skill.skill_name);
+  };
+
+  const getBadges = () => {
+    const badges = user.badges || [];
+    return badges.map((badge: any) => typeof badge === 'string' ? badge : badge.badge?.name || badge.name);
+  };
+
+  const getTotalSwaps = () => {
+    return user.totalSwaps || user.total_completed_swaps || 0;
+  };
+
+  const getLastActive = () => {
+    if (user.lastActive) return user.lastActive;
+    if (user.joined_at) {
+      const joinDate = new Date(user.joined_at);
+      return `Joined ${joinDate.toLocaleDateString()}`;
+    }
+    return 'Recently active';
+  };
+
+  const skillsOffered = getSkillsOffered();
+  const skillsWanted = getSkillsWanted();
+  const badges = getBadges();
+  const totalSwaps = getTotalSwaps();
+  const lastActive = getLastActive();
 
   return (
     <Card 
@@ -66,20 +119,20 @@ export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: Us
               </Avatar>
               <div 
                 className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-background ${getAvailabilityColor(user.availability)}`}
-                title={user.availability === 'available' ? 'Available for swaps' : 'Currently busy'}
+                title={getAvailabilityText(user.availability)}
               />
             </div>
             
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-lg truncate">{user.name}</h3>
+              <h3 className="font-semibold text-lg truncate">{user.name || user.username}</h3>
               <div className="flex items-center text-sm text-muted-foreground space-x-2">
                 <MapPin className="h-3 w-3" />
-                <span className="truncate">{user.location}</span>
+                <span className="truncate">{user.location || 'Location not specified'}</span>
               </div>
               <div className="flex items-center space-x-1 mt-1">
-                {renderStars(user.rating)}
+                {renderStars(user.rating || 0)}
                 <span className="text-sm text-muted-foreground ml-1">
-                  ({user.totalSwaps} swaps)
+                  ({totalSwaps} swaps)
                 </span>
               </div>
             </div>
@@ -87,7 +140,7 @@ export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: Us
 
           <div className="flex items-center space-x-2">
             <Badge variant="secondary" className="text-xs">
-              {user.availability}
+              {user.availability || 'busy'}
             </Badge>
           </div>
         </div>
@@ -95,21 +148,21 @@ export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: Us
 
       <CardContent className="space-y-4">
         {/* Bio */}
-        <p className="text-sm text-muted-foreground line-clamp-2">{user.bio}</p>
+        <p className="text-sm text-muted-foreground line-clamp-2">{user.bio || 'No bio available'}</p>
 
         {/* Skills Offered */}
-        {user.skillsOffered.length > 0 && (
+        {skillsOffered && skillsOffered.length > 0 && (
           <div>
             <h4 className="text-sm font-medium mb-2 text-skill-offered-foreground">Skills Offered</h4>
             <div className="flex flex-wrap gap-1">
-              {user.skillsOffered.slice(0, 3).map((skill) => (
-                <Badge key={skill} className="bg-skill-offered text-skill-offered-foreground text-xs">
+              {skillsOffered.slice(0, 3).map((skill, index) => (
+                <Badge key={index} className="bg-skill-offered text-skill-offered-foreground text-xs">
                   {skill}
                 </Badge>
               ))}
-              {user.skillsOffered.length > 3 && (
+              {skillsOffered.length > 3 && (
                 <Badge variant="secondary" className="text-xs">
-                  +{user.skillsOffered.length - 3} more
+                  +{skillsOffered.length - 3} more
                 </Badge>
               )}
             </div>
@@ -117,18 +170,18 @@ export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: Us
         )}
 
         {/* Skills Wanted */}
-        {user.skillsWanted.length > 0 && (
+        {skillsWanted && skillsWanted.length > 0 && (
           <div>
             <h4 className="text-sm font-medium mb-2 text-skill-wanted-foreground">Looking For</h4>
             <div className="flex flex-wrap gap-1">
-              {user.skillsWanted.slice(0, 3).map((skill) => (
-                <Badge key={skill} className="bg-skill-wanted text-skill-wanted-foreground text-xs">
+              {skillsWanted.slice(0, 3).map((skill, index) => (
+                <Badge key={index} className="bg-skill-wanted text-skill-wanted-foreground text-xs">
                   {skill}
                 </Badge>
               ))}
-              {user.skillsWanted.length > 3 && (
+              {skillsWanted.length > 3 && (
                 <Badge variant="secondary" className="text-xs">
-                  +{user.skillsWanted.length - 3} more
+                  +{skillsWanted.length - 3} more
                 </Badge>
               )}
             </div>
@@ -136,18 +189,18 @@ export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: Us
         )}
 
         {/* Badges */}
-        {user.badges.length > 0 && (
+        {badges && badges.length > 0 && (
           <div>
             <h4 className="text-sm font-medium mb-2">Achievements</h4>
             <div className="flex flex-wrap gap-1">
-              {user.badges.slice(0, 2).map((badge) => (
-                <Badge key={badge} variant="outline" className="text-xs">
+              {badges.slice(0, 2).map((badge, index) => (
+                <Badge key={index} variant="outline" className="text-xs">
                   🏆 {badge}
                 </Badge>
               ))}
-              {user.badges.length > 2 && (
+              {badges.length > 2 && (
                 <Badge variant="secondary" className="text-xs">
-                  +{user.badges.length - 2} more
+                  +{badges.length - 2} more
                 </Badge>
               )}
             </div>
@@ -158,7 +211,7 @@ export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: Us
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <div className="flex items-center space-x-1">
             <Clock className="h-3 w-3" />
-            <span>{user.lastActive}</span>
+            <span>{lastActive}</span>
           </div>
         </div>
 
@@ -170,20 +223,31 @@ export function UserCard({ user, currentUser, onRequestSwap, onViewProfile }: Us
             className="flex-1"
             onClick={(e) => {
               e.stopPropagation();
-              onViewProfile(user.id);
+              if (isAuthenticated) {
+                onViewProfile(user.id);
+              } else {
+                // For guest users, show a message instead of viewing profile
+                alert('Please login to view detailed profiles');
+              }
             }}
           >
-            View Profile
+            {isAuthenticated ? 'View Profile' : 'Login to View'}
           </Button>
           <Button
             variant="request"
             size="sm"
             className="flex-1"
-            disabled={!currentUser || user.id === currentUser.id}
+            // Disable request button for non-authenticated users or own profile
+            disabled={!isAuthenticated || !currentUser || user.id === currentUser?.id}
             onClick={(e) => {
               e.stopPropagation();
-              onRequestSwap(user.id);
+              if (isAuthenticated) {
+                onRequestSwap(user.id);
+              } else {
+                alert('Please login to request skill swaps');
+              }
             }}
+            title={!isAuthenticated ? 'Login to request a skill swap' : ''}
           >
             {!currentUser ? 'Login to Request' : 'Request Swap'}
           </Button>

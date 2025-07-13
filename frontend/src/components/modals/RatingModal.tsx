@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
+import { handleAsyncOperation, getUserFriendlyMessage, logError } from "@/lib/errorHandler";
 
 interface RatingModalProps {
   isOpen: boolean;
@@ -18,20 +20,69 @@ export function RatingModal({ isOpen, onClose, swapRequest, onSubmit }: RatingMo
   const [hoverRating, setHoverRating] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
+  const { toast } = useToast();
 
   if (!isOpen || !swapRequest) return null;
 
+  const validateForm = (): string[] => {
+    const newErrors: string[] = [];
+    
+    if (rating === 0) {
+      newErrors.push("Please select a rating");
+    }
+    
+    if (feedback.length > 300) {
+      newErrors.push("Feedback must be 300 characters or less");
+    }
+    
+    return newErrors;
+  };
+
   const handleSubmit = async () => {
-    if (rating === 0) return;
+    // Clear previous errors
+    setErrors([]);
+    
+    // Validate form
+    const validationErrors = validateForm();
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      toast({
+        title: "Please fix the following errors",
+        description: validationErrors.join(", "),
+        variant: "destructive",
+      });
+      return;
+    }
     
     setIsSubmitting(true);
-    await onSubmit(rating, feedback);
+    
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await onSubmit(rating, feedback);
+      },
+      (error) => {
+        logError(error, 'RatingModal');
+        toast({
+          title: "Rating failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      setIsSubmitting(false);
+      return;
+    }
+    
     setIsSubmitting(false);
     
     // Reset form
     setRating(0);
     setHoverRating(0);
     setFeedback("");
+    setErrors([]);
     onClose();
   };
 
@@ -72,6 +123,17 @@ export function RatingModal({ isOpen, onClose, swapRequest, onSubmit }: RatingMo
         </CardHeader>
         
         <CardContent className="space-y-6">
+          {/* Error Display */}
+          {errors.length > 0 && (
+            <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+              <ul className="text-sm text-destructive space-y-1">
+                {errors.map((error, index) => (
+                  <li key={index}>• {error}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* Swap Details */}
           <div className="p-4 bg-card-hover rounded-lg">
             <div className="flex items-center space-x-3 mb-3">
@@ -126,7 +188,7 @@ export function RatingModal({ isOpen, onClose, swapRequest, onSubmit }: RatingMo
               rows={4}
               className="resize-none"
             />
-            <p className="text-xs text-muted-foreground">
+            <p className={`text-xs ${feedback.length > 300 ? 'text-destructive' : 'text-muted-foreground'}`}>
               {feedback.length}/300 characters
             </p>
           </div>
@@ -140,7 +202,7 @@ export function RatingModal({ isOpen, onClose, swapRequest, onSubmit }: RatingMo
               variant="request"
               onClick={handleSubmit}
               className="flex-1"
-              disabled={rating === 0 || isSubmitting || feedback.length > 300}
+              disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "Submit Rating"}
             </Button>

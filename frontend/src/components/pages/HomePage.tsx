@@ -3,7 +3,7 @@ import { UserCard } from "@/components/profile/UserCard";
 import { SwapRequestModal } from "@/components/modals/SwapRequestModal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight, Users, Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, Users, Search, Clock } from "lucide-react";
 
 interface HomePageProps {
   users: any[];
@@ -12,6 +12,8 @@ interface HomePageProps {
   availabilityFilter: string;
   onRequestSwap: (data: any) => void;
   onViewProfile: (userId: string) => void;
+  onNavigate?: (page: string) => void;
+  isAuthenticated?: boolean;
 }
 
 export function HomePage({
@@ -21,10 +23,38 @@ export function HomePage({
   availabilityFilter,
   onRequestSwap,
   onViewProfile,
+  onNavigate,
+  isAuthenticated = false
 }: HomePageProps) {
   const [selectedUserForRequest, setSelectedUserForRequest] = useState<any>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 12;
+
+  // Admin users should not access the home page
+  if (currentUser?.role === 'admin') {
+    return (
+      <div className="text-center py-12">
+        <div className="text-muted-foreground mb-4">
+          <h3 className="text-lg font-medium">Admin Access Restricted</h3>
+          <p className="text-sm">
+            Admin users should use the Admin Panel to manage the platform.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const handleSignUpClick = () => {
+    if (onNavigate) {
+      onNavigate('register');
+    }
+  };
+  
+  const handleRegister = () => {
+    if (onNavigate) {
+      onNavigate('register');
+    }
+  };
 
   // Filter users based on search and availability
   const filteredUsers = useMemo(() => {
@@ -40,16 +70,19 @@ export function HomePage({
       // Filter by search term
       if (searchTerm) {
         const searchLower = searchTerm.toLowerCase();
+        const skillsOffered = user.skillsOffered || user.skills_offered || [];
+        const skillsWanted = user.skillsWanted || user.skills_wanted || [];
+        
         return (
-          user.name.toLowerCase().includes(searchLower) ||
-          user.skillsOffered.some((skill: string) => 
-            skill.toLowerCase().includes(searchLower)
+          (user.name || user.username || '').toLowerCase().includes(searchLower) ||
+          skillsOffered.some((skill: any) => 
+            (typeof skill === 'string' ? skill : skill.skill_name || '').toLowerCase().includes(searchLower)
           ) ||
-          user.skillsWanted.some((skill: string) => 
-            skill.toLowerCase().includes(searchLower)
+          skillsWanted.some((skill: any) => 
+            (typeof skill === 'string' ? skill : skill.skill_name || '').toLowerCase().includes(searchLower)
           ) ||
-          user.bio.toLowerCase().includes(searchLower) ||
-          user.location.toLowerCase().includes(searchLower)
+          (user.bio || '').toLowerCase().includes(searchLower) ||
+          (user.location || '').toLowerCase().includes(searchLower)
         );
       }
       
@@ -93,9 +126,9 @@ export function HomePage({
         {!currentUser && (
           <div className="mt-6">
             <p className="text-sm text-muted-foreground mb-3">
-              Join our community to start swapping skills
+              Join our community to start swapping skills and connect with others
             </p>
-            <Button variant="request" size="lg" onClick={() => window.location.reload()}>
+            <Button variant="default" size="lg" onClick={handleRegister} className="bg-primary text-primary-foreground hover:bg-primary/90">
               Sign Up Now
             </Button>
           </div>
@@ -120,6 +153,7 @@ export function HomePage({
         </Card>
         <Card>
           <CardContent className="p-6 text-center">
+            <Clock className="h-8 w-8 mx-auto mb-2 text-primary" />
             <div className="text-2xl font-bold">
               {users.filter(u => u.availability === 'available').length}
             </div>
@@ -148,7 +182,17 @@ export function HomePage({
       </div>
 
       {/* User Grid */}
-      {paginatedUsers.length > 0 ? (
+      {users.length === 0 ? (
+        <div className="text-center py-12">
+          <div className="text-muted-foreground mb-4">
+            <Users className="h-12 w-12 mx-auto mb-4 opacity-50" />
+            <h3 className="text-lg font-medium">No members available</h3>
+            <p className="text-sm">
+              There are currently no members in the system.
+            </p>
+          </div>
+        </div>
+      ) : paginatedUsers.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {paginatedUsers.map((user) => (
             <UserCard
@@ -157,6 +201,7 @@ export function HomePage({
               currentUser={currentUser}
               onRequestSwap={handleRequestSwap}
               onViewProfile={onViewProfile}
+              isAuthenticated={isAuthenticated}
             />
           ))}
         </div>
@@ -170,7 +215,7 @@ export function HomePage({
                 ? `No results for "${searchTerm}". Try different keywords.`
                 : availabilityFilter !== 'all'
                 ? `No ${availabilityFilter} members found.`
-                : 'No members available at the moment.'
+                : 'Currently there are no members matching your criteria.'
               }
             </p>
           </div>
@@ -178,8 +223,7 @@ export function HomePage({
             <Button 
               variant="outline" 
               onClick={() => {
-                // This would be handled by parent component
-                window.location.reload();
+                window.location.href = '/?reset=true';
               }}
             >
               Clear Filters

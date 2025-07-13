@@ -13,6 +13,7 @@ interface RequestsPageProps {
   requests: any[];
   onUpdateRequest: (requestId: string, status: string) => void;
   onSubmitRating: (requestId: string, rating: number, feedback: string) => void;
+  onCancelSwap: (requestId: string) => void;
 }
 
 export function RequestsPage({ 
@@ -20,7 +21,8 @@ export function RequestsPage({
   onBack, 
   requests, 
   onUpdateRequest,
-  onSubmitRating 
+  onSubmitRating,
+  onCancelSwap
 }: RequestsPageProps) {
   const [activeTab, setActiveTab] = useState("received");
   const [ratingModalOpen, setRatingModalOpen] = useState(false);
@@ -75,6 +77,10 @@ export function RequestsPage({
     }
     setRatingModalOpen(false);
     setSelectedRequest(null);
+  };
+
+  const handleCancelSwap = (requestId: string) => {
+    onCancelSwap(requestId);
   };
 
   const formatDate = (dateString: string) => {
@@ -279,7 +285,17 @@ export function RequestsPage({
                           Sent {formatDate(request.createdAt)}
                         </p>
                         
-                        {request.status === 'completed' && !request.rated && (
+                        {request.status === 'pending' && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleCancelSwap(request.id)}
+                            className="text-red-500 hover:text-red-600"
+                          >
+                            Cancel
+                          </Button>
+                        )}
+                        {request.status === 'accepted' && !request.rated && (
                           <Button
                             variant="outline"
                             size="sm"

@@ -31,7 +31,7 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
     location: user?.location || "",
     bio: user?.bio || "",
     isPublic: user?.isPublic ?? true,
-    availability: user?.availability || "available",
+    availability: user?.availability || "flexible",
     skillsOffered: user?.skillsOffered || [],
     skillsWanted: user?.skillsWanted || [],
     avatar: user?.avatar || "",
@@ -39,14 +39,49 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
   const [newSkillOffered, setNewSkillOffered] = useState("");
   const [newSkillWanted, setNewSkillWanted] = useState("");
 
+  // Debug: Log the user prop received
+  console.log("ProfilePage received user prop:", user);
+
+  // Update formData when user prop changes
+  useEffect(() => {
+    console.log("ProfilePage updating formData with user:", user);
+    
+    // Extract skills from the backend response format
+    const skillsOffered = user?.skills_offered?.map((skill: any) => skill.skill_name) || user?.skillsOffered || [];
+    const skillsWanted = user?.skills_wanted?.map((skill: any) => skill.skill_name) || user?.skillsWanted || [];
+    
+    // Build the full name from first_name and last_name
+    const fullName = user?.first_name && user?.last_name 
+      ? `${user.first_name} ${user.last_name}`.trim()
+      : user?.name || user?.username || "";
+
+    setFormData({
+      name: fullName,
+      location: user?.location || "",
+      bio: user?.bio || "",
+      isPublic: user?.isPublic !== undefined ? user.isPublic : user?.is_public ?? true,
+      availability: user?.availability || "flexible",
+      skillsOffered: skillsOffered,
+      skillsWanted: skillsWanted,
+      avatar: user?.avatar || "",
+    });
+  }, [user]);
+
   useEffect(() => {
     // Auto-save to localStorage as draft
     const draft = JSON.stringify(formData);
     localStorage.setItem("skillswap_profile_draft", draft);
   }, [formData]);
 
+  // Patch formData to map to backend field names on save
   const handleSave = () => {
-    onSave(formData);
+    const payload = {
+      ...formData,
+      skills_offered: formData.skillsOffered,
+      skills_wanted: formData.skillsWanted,
+      is_public: formData.isPublic,
+    };
+    onSave(payload);
     setIsEditing(false);
     localStorage.removeItem("skillswap_profile_draft");
   };
@@ -57,7 +92,7 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
       location: user?.location || "",
       bio: user?.bio || "",
       isPublic: user?.isPublic ?? true,
-      availability: user?.availability || "available",
+      availability: user?.availability || "flexible",
       skillsOffered: user?.skillsOffered || [],
       skillsWanted: user?.skillsWanted || [],
       avatar: user?.avatar || "",
@@ -161,7 +196,9 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
                   <div className="flex items-center space-x-4">
                     <Avatar className="h-20 w-20">
                       <AvatarImage src={isEditing ? formData.avatar : user.avatar} alt={user.name} />
-                      <AvatarFallback className="text-lg">{user.name.charAt(0)}</AvatarFallback>
+                      <AvatarFallback className="text-lg">
+                        {(user.first_name && user.last_name ? `${user.first_name} ${user.last_name}` : user.name || user.username || 'U').charAt(0)}
+                      </AvatarFallback>
                     </Avatar>
                     {isEditing && (
                       <div className="flex-1">
@@ -186,7 +223,9 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         />
                       ) : (
-                        <p className="text-lg font-medium">{user.name}</p>
+                        <p className="text-lg font-medium">
+                          {user.first_name && user.last_name ? `${user.first_name} ${user.last_name}` : user.name || user.username}
+                        </p>
                       )}
                     </div>
 
@@ -228,18 +267,20 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">{user.rating}</div>
+                    <div className="text-3xl font-bold text-primary">{user.rating || 0}</div>
                     <div className="text-sm text-muted-foreground">Average Rating</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">{user.totalSwaps}</div>
+                    <div className="text-3xl font-bold text-primary">{user.total_completed_swaps || user.totalSwaps || 0}</div>
                     <div className="text-sm text-muted-foreground">Completed Swaps</div>
                   </div>
                   <div className="space-y-2">
                     <Label>Badges</Label>
                     <div className="flex flex-wrap gap-2">
-                      {user.badges?.map((badge: string) => (
-                        <Badge key={badge} variant="secondary">{badge}</Badge>
+                      {(user.badges || []).map((badgeObj: any, index: number) => (
+                        <Badge key={index} variant="secondary">
+                          {badgeObj.badge?.name || badgeObj.name || 'Badge'}
+                        </Badge>
                       ))}
                     </div>
                   </div>
@@ -256,7 +297,7 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
                   <CardTitle className="flex items-center justify-between">
                     Skills I Offer
                     <Badge className="bg-skill-offered text-skill-offered-foreground">
-                      {(isEditing ? formData.skillsOffered : user.skillsOffered).length}
+                      {(isEditing ? formData.skillsOffered : (user.skills_offered?.map((skill: any) => skill.skill_name) || user.skillsOffered || [])).length}
                     </Badge>
                   </CardTitle>
                 </CardHeader>
@@ -275,7 +316,7 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
                     </div>
                   )}
                   <div className="flex flex-wrap gap-2">
-                    {(isEditing ? formData.skillsOffered : user.skillsOffered).map((skill: string) => (
+                    {(isEditing ? formData.skillsOffered : (user.skills_offered?.map((skill: any) => skill.skill_name) || user.skillsOffered || [])).map((skill: string) => (
                       <Badge
                         key={skill}
                         className="bg-skill-offered text-skill-offered-foreground flex items-center space-x-1"
@@ -298,7 +339,7 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
                   <CardTitle className="flex items-center justify-between">
                     Skills I Want to Learn
                     <Badge className="bg-skill-wanted text-skill-wanted-foreground">
-                      {(isEditing ? formData.skillsWanted : user.skillsWanted).length}
+                      {(isEditing ? formData.skillsWanted : (user.skills_wanted?.map((skill: any) => skill.skill_name) || user.skillsWanted || [])).length}
                     </Badge>
                   </CardTitle>
                 </CardHeader>
@@ -317,7 +358,7 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
                     </div>
                   )}
                   <div className="flex flex-wrap gap-2">
-                    {(isEditing ? formData.skillsWanted : user.skillsWanted).map((skill: string) => (
+                    {(isEditing ? formData.skillsWanted : (user.skills_wanted?.map((skill: any) => skill.skill_name) || user.skillsWanted || [])).map((skill: string) => (
                       <Badge
                         key={skill}
                         className="bg-skill-wanted text-skill-wanted-foreground flex items-center space-x-1"
@@ -369,13 +410,22 @@ export function ProfilePage({ user, onBack, onSave }: ProfilePageProps) {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="available">Available for swaps</SelectItem>
-                        <SelectItem value="busy">Busy (limited availability)</SelectItem>
+                        <SelectItem value="weekdays">Weekdays</SelectItem>
+                        <SelectItem value="weekends">Weekends</SelectItem>
+                        <SelectItem value="evenings">Evenings</SelectItem>
+                        <SelectItem value="mornings">Mornings</SelectItem>
+                        <SelectItem value="flexible">Flexible Schedule</SelectItem>
+                        <SelectItem value="busy">Currently Busy</SelectItem>
                       </SelectContent>
                     </Select>
                   ) : (
-                    <Badge variant={user.availability === 'available' ? 'default' : 'secondary'}>
-                      {user.availability === 'available' ? 'Available' : 'Busy'}
+                    <Badge variant={user.availability === 'busy' ? 'secondary' : 'default'}>
+                      {user.availability === 'weekdays' ? 'Weekdays' :
+                       user.availability === 'weekends' ? 'Weekends' :
+                       user.availability === 'evenings' ? 'Evenings' :
+                       user.availability === 'mornings' ? 'Mornings' :
+                       user.availability === 'flexible' ? 'Flexible Schedule' :
+                       user.availability === 'busy' ? 'Currently Busy' : 'Available'}
                     </Badge>
                   )}
                 </div>

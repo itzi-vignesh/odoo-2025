@@ -1,0 +1,1160 @@
+INFO 2025-07-14 01:48:54,043 autoreload 4104 29212 Watching for file changes with StatReloader
+INFO 2025-07-14 01:51:24,596 autoreload 11284 20708 Watching for file changes with StatReloader
+INFO 2025-07-14 01:56:25,489 autoreload 11284 20708 D:\Projects\odoo-2025\backend\swaps\views.py changed, reloading.
+INFO 2025-07-14 01:56:27,290 autoreload 28636 26896 Watching for file changes with StatReloader
+INFO 2025-07-14 01:56:51,515 autoreload 28636 26896 D:\Projects\odoo-2025\backend\users\serializers.py changed, reloading.
+INFO 2025-07-14 01:56:53,289 autoreload 32304 9776 Watching for file changes with StatReloader
+INFO 2025-07-14 01:59:12,328 autoreload 32304 9776 D:\Projects\odoo-2025\backend\swaps\views.py changed, reloading.
+INFO 2025-07-14 01:59:14,642 autoreload 22748 28320 Watching for file changes with StatReloader
+INFO 2025-07-14 01:59:17,234 autoreload 22748 28320 D:\Projects\odoo-2025\backend\swaps\views.py changed, reloading.
+INFO 2025-07-14 01:59:19,399 autoreload 32080 21096 Watching for file changes with StatReloader
+INFO 2025-07-14 02:01:33,610 basehttp 32080 32556 "GET /api/users/ HTTP/1.1" 200 20250
+INFO 2025-07-14 02:01:41,719 basehttp 32080 11036 "GET /api/users/ HTTP/1.1" 200 20250
+INFO 2025-07-14 02:02:20,103 autoreload 32080 21096 D:\Projects\odoo-2025\backend\talent_bridge\settings.py changed, reloading.
+INFO 2025-07-14 02:02:24,229 autoreload 27828 27664 Watching for file changes with StatReloader
+INFO 2025-07-14 02:02:34,750 basehttp 27828 32584 "GET /api/users/ HTTP/1.1" 200 20250
+INFO 2025-07-14 02:03:30,474 views 27828 10044 New user registered: test (hi@example.com)
+INFO 2025-07-14 02:03:30,641 basehttp 27828 10044 "POST /api/auth/register/ HTTP/1.1" 201 1206
+INFO 2025-07-14 02:03:32,005 basehttp 27828 10044 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:12:02,137 basehttp 27828 28428 "GET /api/users/me/ HTTP/1.1" 200 712
+INFO 2025-07-14 02:12:02,164 basehttp 27828 28428 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:12:02,204 basehttp 27828 28428 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:12:02,379 basehttp 27828 25008 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:12:02,716 basehttp 27828 28428 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:12:03,304 basehttp 27828 25008 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:14:02,466 basehttp 27828 26504 "GET /api/users/me/ HTTP/1.1" 200 712
+INFO 2025-07-14 02:14:02,494 basehttp 27828 26504 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:14:02,626 basehttp 27828 26504 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:14:02,749 basehttp 27828 18932 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:14:03,548 basehttp 27828 26504 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:14:04,602 basehttp 27828 18932 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:14:10,343 basehttp 27828 8424 "GET /api/users/me/ HTTP/1.1" 200 712
+INFO 2025-07-14 02:14:10,378 basehttp 27828 8424 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:14:10,411 basehttp 27828 8424 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:14:10,606 basehttp 27828 13820 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:14:11,281 basehttp 27828 8424 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:14:12,070 basehttp 27828 13820 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:14:23,304 basehttp 27828 24560 "GET /api/users/me/ HTTP/1.1" 200 712
+INFO 2025-07-14 02:14:23,328 basehttp 27828 24560 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:14:23,385 basehttp 27828 24560 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:14:23,560 basehttp 27828 17076 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:14:24,101 basehttp 27828 24560 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:14:24,932 basehttp 27828 17076 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:14:41,579 basehttp 27828 31140 "GET /api/users/me/ HTTP/1.1" 200 712
+INFO 2025-07-14 02:14:41,603 basehttp 27828 31140 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:14:41,634 basehttp 27828 31140 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:14:41,826 basehttp 27828 20692 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:14:42,039 basehttp 27828 31140 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:14:42,449 basehttp 27828 20692 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:17:44,011 basehttp 27828 18736 "GET /api/users/me/ HTTP/1.1" 200 712
+INFO 2025-07-14 02:17:44,048 basehttp 27828 18736 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:17:44,082 basehttp 27828 18736 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:17:44,289 basehttp 27828 18736 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:17:44,497 basehttp 27828 33448 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:17:44,965 basehttp 27828 18736 "GET /api/users/ HTTP/1.1" 200 20841
+INFO 2025-07-14 02:17:45,396 basehttp 27828 33448 "GET /api/users/ HTTP/1.1" 200 20841
+WARNING 2025-07-14 02:21:09,315 log 27828 21272 Unauthorized: /api/auth/login/
+WARNING 2025-07-14 02:21:09,325 basehttp 27828 21272 "POST /api/auth/login/ HTTP/1.1" 401 37
+WARNING 2025-07-14 02:21:16,840 log 27828 21272 Unauthorized: /api/auth/login/
+WARNING 2025-07-14 02:21:16,853 basehttp 27828 21272 "POST /api/auth/login/ HTTP/1.1" 401 37
+WARNING 2025-07-14 02:21:20,194 log 27828 21272 Unauthorized: /api/auth/login/
+WARNING 2025-07-14 02:21:20,199 basehttp 27828 21272 "POST /api/auth/login/ HTTP/1.1" 401 37
+WARNING 2025-07-14 02:21:23,597 log 27828 21272 Unauthorized: /api/auth/login/
+WARNING 2025-07-14 02:21:23,611 basehttp 27828 21272 "POST /api/auth/login/ HTTP/1.1" 401 37
+WARNING 2025-07-14 02:21:26,211 log 27828 21272 Unauthorized: /api/auth/login/
+WARNING 2025-07-14 02:21:26,218 basehttp 27828 21272 "POST /api/auth/login/ HTTP/1.1" 401 37
+INFO 2025-07-14 02:21:44,472 autoreload 27828 27664 D:\Projects\odoo-2025\backend\users\serializers.py changed, reloading.
+INFO 2025-07-14 02:21:49,514 autoreload 1664 18096 Watching for file changes with StatReloader
+INFO 2025-07-14 02:22:02,666 autoreload 1664 18096 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 02:22:04,560 autoreload 31048 13236 Watching for file changes with StatReloader
+INFO 2025-07-14 02:22:17,100 autoreload 31048 13236 D:\Projects\odoo-2025\backend\users\serializers.py changed, reloading.
+INFO 2025-07-14 02:22:19,593 autoreload 5884 19392 Watching for file changes with StatReloader
+INFO 2025-07-14 02:22:30,606 autoreload 5884 19392 D:\Projects\odoo-2025\backend\users\serializers.py changed, reloading.
+INFO 2025-07-14 02:22:33,427 autoreload 27024 30856 Watching for file changes with StatReloader
+INFO 2025-07-14 02:23:08,793 autoreload 27024 30856 D:\Projects\odoo-2025\backend\swaps\serializers.py changed, reloading.
+INFO 2025-07-14 02:23:10,266 autoreload 29836 30464 Watching for file changes with StatReloader
+INFO 2025-07-14 02:23:32,161 autoreload 29836 30464 D:\Projects\odoo-2025\backend\ratings\serializers.py changed, reloading.
+INFO 2025-07-14 02:23:33,652 autoreload 32652 30148 Watching for file changes with StatReloader
+INFO 2025-07-14 02:23:48,788 autoreload 32652 30148 D:\Projects\odoo-2025\backend\notifications\serializers.py changed, reloading.
+INFO 2025-07-14 02:23:50,372 autoreload 30348 16852 Watching for file changes with StatReloader
+INFO 2025-07-14 02:24:16,038 autoreload 30348 16852 D:\Projects\odoo-2025\backend\talent_bridge\middleware.py changed, reloading.
+INFO 2025-07-14 02:24:17,579 autoreload 21196 7948 Watching for file changes with StatReloader
+INFO 2025-07-14 02:24:27,093 autoreload 21196 7948 D:\Projects\odoo-2025\backend\talent_bridge\settings.py changed, reloading.
+INFO 2025-07-14 02:24:28,426 autoreload 10296 32320 Watching for file changes with StatReloader
+INFO 2025-07-14 02:24:43,319 autoreload 10296 32320 D:\Projects\odoo-2025\backend\talent_bridge\settings.py changed, reloading.
+INFO 2025-07-14 02:24:44,710 autoreload 28516 32068 Watching for file changes with StatReloader
+INFO 2025-07-14 02:43:10,711 basehttp 28516 29088 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:43:16,734 basehttp 28516 3644 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-07-14 02:43:18,008 views 28516 3644 User logged in: admin
+INFO 2025-07-14 02:43:18,008 basehttp 28516 3644 "POST /api/auth/login/ HTTP/1.1" 200 1444
+INFO 2025-07-14 02:43:18,223 basehttp 28516 3644 "OPTIONS /api/users/ HTTP/1.1" 200 0
+INFO 2025-07-14 02:43:19,250 basehttp 28516 3644 "GET /api/users/ HTTP/1.1" 200 22146
+ERROR 2025-07-14 02:44:02,360 views 28516 30048 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 02:44:02,360 log 28516 30048 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 02:44:02,375 basehttp 28516 30048 "POST /api/auth/login/ HTTP/1.1" 500 43
+ERROR 2025-07-14 02:44:08,725 views 28516 11016 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 02:44:08,725 log 28516 11016 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 02:44:08,725 basehttp 28516 11016 "POST /api/auth/login/ HTTP/1.1" 500 43
+INFO 2025-07-14 02:46:10,149 basehttp 28516 14972 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:46:55,581 basehttp 28516 10400 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:48:32,215 basehttp 28516 17016 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:48:37,571 basehttp 28516 17016 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:48:58,776 views 28516 10132 User logged in: admin
+INFO 2025-07-14 02:48:58,785 basehttp 28516 10132 "POST /api/auth/login/ HTTP/1.1" 200 1444
+INFO 2025-07-14 02:49:00,054 basehttp 28516 10132 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:14,023 basehttp 28516 32116 "OPTIONS /api/users/me/ HTTP/1.1" 200 0
+INFO 2025-07-14 02:52:14,110 basehttp 28516 32116 "GET /api/users/me/ HTTP/1.1" 200 950
+INFO 2025-07-14 02:52:14,141 basehttp 28516 32116 "OPTIONS /api/notifications/ HTTP/1.1" 200 0
+INFO 2025-07-14 02:52:14,153 basehttp 28516 32116 "OPTIONS /api/swaps/sent/ HTTP/1.1" 200 0
+INFO 2025-07-14 02:52:14,185 basehttp 28516 32116 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:52:14,229 basehttp 28516 32116 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:52:14,512 basehttp 28516 32116 "OPTIONS /api/swaps/received/ HTTP/1.1" 200 0
+INFO 2025-07-14 02:52:14,538 basehttp 28516 32116 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:52:14,691 basehttp 28516 8304 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:15,103 basehttp 28516 32116 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:15,610 basehttp 28516 8304 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:22,021 basehttp 28516 22640 "GET /api/users/me/ HTTP/1.1" 200 950
+INFO 2025-07-14 02:52:22,059 basehttp 28516 22640 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:52:22,095 basehttp 28516 22640 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:52:22,374 basehttp 28516 22640 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:52:22,671 basehttp 28516 30308 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:23,116 basehttp 28516 22640 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:23,803 basehttp 28516 30308 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:27,922 basehttp 28516 27784 "GET /api/users/me/ HTTP/1.1" 200 950
+INFO 2025-07-14 02:52:27,940 basehttp 28516 27784 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:52:27,974 basehttp 28516 27784 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:52:28,383 basehttp 28516 18056 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:28,459 basehttp 28516 18056 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:52:28,670 basehttp 28516 27784 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:52:29,084 basehttp 28516 18056 "GET /api/users/ HTTP/1.1" 200 22146
+ERROR 2025-07-14 02:53:47,059 exception 9892 31588 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 02:53:47,300 log 9892 31588 Bad Request: /api/auth/login/
+ERROR 2025-07-14 02:53:47,315 exception 9892 31588 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 02:53:47,360 log 9892 31588 Bad Request: /api/auth/login/
+INFO 2025-07-14 02:54:05,795 basehttp 28516 9464 "GET /api/users/me/ HTTP/1.1" 200 950
+INFO 2025-07-14 02:54:05,856 basehttp 28516 9464 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 02:54:05,951 basehttp 28516 9464 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:54:06,054 basehttp 28516 9464 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 02:54:07,059 basehttp 28516 32736 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:54:08,352 basehttp 28516 9464 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:54:17,533 views 28516 9464 User logged in: admin
+INFO 2025-07-14 02:54:17,537 basehttp 28516 9464 "POST /api/auth/login/ HTTP/1.1" 200 1444
+INFO 2025-07-14 02:54:18,769 basehttp 28516 9464 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:54:55,893 views 28516 21444 User logged in: admin
+INFO 2025-07-14 02:54:55,913 basehttp 28516 21444 "POST /api/auth/login/ HTTP/1.1" 200 1444
+INFO 2025-07-14 02:54:57,009 basehttp 28516 21444 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:56:19,257 basehttp 28516 14972 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 02:56:24,293 basehttp 28516 29164 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-07-14 02:56:24,775 views 28516 29164 User logged in: admin
+INFO 2025-07-14 02:56:24,778 basehttp 28516 29164 "POST /api/auth/login/ HTTP/1.1" 200 1444
+INFO 2025-07-14 02:56:24,952 basehttp 28516 29164 "OPTIONS /api/users/ HTTP/1.1" 200 0
+INFO 2025-07-14 02:56:25,589 basehttp 28516 29164 "GET /api/users/ HTTP/1.1" 200 22146
+ERROR 2025-07-14 03:02:01,410 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:01,803 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:01,830 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:01,863 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:01,883 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:01,914 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:01,916 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:01,950 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:01,951 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:01,978 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:01,978 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:02,018 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:02,019 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:02,054 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:02,054 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:02,095 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:02,098 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:02,133 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:02,135 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:02,164 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:02,175 exception 11560 24064 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "D:\Projects\odoo-2025\backend\venv\lib\site-packages\django\http\request.py", line 167, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-07-14 03:02:02,210 log 11560 24064 Bad Request: /api/auth/login/
+ERROR 2025-07-14 03:02:20,636 views 28516 31004 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:02:20,636 log 28516 31004 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:02:20,636 basehttp 28516 31004 "POST /api/auth/login/ HTTP/1.1" 500 43
+INFO 2025-07-14 03:02:24,501 autoreload 28516 32068 D:\Projects\odoo-2025\backend\talent_bridge\settings.py changed, reloading.
+INFO 2025-07-14 03:02:26,217 autoreload 29996 6672 Watching for file changes with StatReloader
+INFO 2025-07-14 03:02:27,774 views 29996 25452 User logged in: admin
+INFO 2025-07-14 03:02:27,787 basehttp 29996 25452 "POST /api/auth/login/ HTTP/1.1" 200 1444
+INFO 2025-07-14 03:02:28,324 basehttp 29996 25452 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:02:37,132 views 29996 25452 User logged in: sarahchen
+INFO 2025-07-14 03:02:37,132 basehttp 29996 25452 "POST /api/auth/login/ HTTP/1.1" 200 2209
+INFO 2025-07-14 03:02:38,046 basehttp 29996 25452 "GET /api/users/ HTTP/1.1" 200 22146
+ERROR 2025-07-14 03:02:46,727 views 29996 31648 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:02:46,727 log 29996 31648 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:02:46,727 basehttp 29996 31648 "POST /api/auth/login/ HTTP/1.1" 500 43
+ERROR 2025-07-14 03:02:51,210 views 29996 31648 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:02:51,210 log 29996 31648 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:02:51,210 basehttp 29996 31648 "POST /api/auth/login/ HTTP/1.1" 500 43
+ERROR 2025-07-14 03:02:55,860 views 29996 31648 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:02:55,875 log 29996 31648 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:02:55,875 basehttp 29996 31648 "POST /api/auth/login/ HTTP/1.1" 500 43
+INFO 2025-07-14 03:03:00,007 views 29996 31648 User logged in: johnmartinez
+INFO 2025-07-14 03:03:00,023 basehttp 29996 31648 "POST /api/auth/login/ HTTP/1.1" 200 2244
+INFO 2025-07-14 03:03:00,813 basehttp 29996 31648 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:03:13,075 views 31668 22204 User logged in: admin
+ERROR 2025-07-14 03:03:13,433 views 31668 22204 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:03:13,433 log 31668 22204 Internal Server Error: /api/auth/login/
+INFO 2025-07-14 03:03:13,729 views 31668 22204 User logged in: admin
+ERROR 2025-07-14 03:03:14,110 views 31668 22204 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:03:14,112 log 31668 22204 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:03:14,486 views 31668 22204 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:03:14,487 log 31668 22204 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:03:14,836 views 31668 22204 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:03:14,836 log 31668 22204 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:03:15,151 views 31668 22204 Login failed - Unexpected error: No active account found with the given credentials
+ERROR 2025-07-14 03:03:15,151 log 31668 22204 Internal Server Error: /api/auth/login/
+INFO 2025-07-14 03:03:15,663 views 31668 22204 User logged in: johnmartinez
+INFO 2025-07-14 03:03:16,162 views 31668 22204 User logged in: sarahchen
+INFO 2025-07-14 03:03:16,632 views 31668 22204 User logged in: priyapatel
+INFO 2025-07-14 03:03:17,149 views 31668 22204 User logged in: ahmedhassan
+INFO 2025-07-14 03:03:37,482 views 29996 18096 User logged in: admin
+INFO 2025-07-14 03:03:37,482 basehttp 29996 18096 "POST /api/auth/login/ HTTP/1.1" 200 1444
+INFO 2025-07-14 03:03:37,974 basehttp 29996 18096 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:05:24,571 autoreload 29996 6672 D:\Projects\odoo-2025\backend\users\serializers.py changed, reloading.
+INFO 2025-07-14 03:05:26,954 autoreload 33080 21684 Watching for file changes with StatReloader
+ERROR 2025-07-14 03:07:42,510 views 33080 29876 Login failed - Unexpected error: It is redundant to specify `source='role'` on field 'CharField' in serializer 'UserSerializer', because it is the same as the field name. Remove the `source` keyword argument.
+ERROR 2025-07-14 03:07:42,510 log 33080 29876 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:07:42,510 basehttp 33080 29876 "POST /api/auth/login/ HTTP/1.1" 500 43
+ERROR 2025-07-14 03:08:05,004 views 33080 6768 Login failed - Unexpected error: It is redundant to specify `source='role'` on field 'CharField' in serializer 'UserSerializer', because it is the same as the field name. Remove the `source` keyword argument.
+ERROR 2025-07-14 03:08:05,004 log 33080 6768 Internal Server Error: /api/auth/login/
+ERROR 2025-07-14 03:08:05,004 basehttp 33080 6768 "POST /api/auth/login/ HTTP/1.1" 500 43
+INFO 2025-07-14 03:08:50,134 autoreload 33080 21684 D:\Projects\odoo-2025\backend\users\serializers.py changed, reloading.
+INFO 2025-07-14 03:08:51,348 autoreload 14764 29636 Watching for file changes with StatReloader
+INFO 2025-07-14 03:08:59,908 views 14764 7696 User logged in: admin
+INFO 2025-07-14 03:08:59,910 basehttp 14764 7696 "POST /api/auth/login/ HTTP/1.1" 200 1459
+INFO 2025-07-14 03:09:15,851 basehttp 14764 7696 "OPTIONS /api/admin/reports/user_activity/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:09:15,859 basehttp 14764 7696 "GET /api/admin/reports/user_activity/ HTTP/1.1" 200 52
+INFO 2025-07-14 03:11:03,509 views 14764 5388 User logged in: johnmartinez
+INFO 2025-07-14 03:11:03,509 basehttp 14764 5388 "POST /api/auth/login/ HTTP/1.1" 200 2258
+INFO 2025-07-14 03:11:04,245 basehttp 14764 5388 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:12:58,569 autoreload 14764 29636 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:13:00,750 autoreload 31160 32952 Watching for file changes with StatReloader
+INFO 2025-07-14 03:13:05,955 autoreload 31160 32952 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:13:08,227 autoreload 27644 24480 Watching for file changes with StatReloader
+INFO 2025-07-14 03:13:13,910 basehttp 27644 8016 "OPTIONS /api/users/me/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:13:14,032 basehttp 27644 8016 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:13:14,053 basehttp 27644 8016 "OPTIONS /api/notifications/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:13:14,065 basehttp 27644 8016 "OPTIONS /api/swaps/sent/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:13:14,216 basehttp 27644 8016 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:13:14,336 basehttp 27644 7376 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:13:14,346 basehttp 27644 7376 "OPTIONS /api/swaps/received/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:13:14,368 basehttp 27644 7376 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:13:14,455 basehttp 27644 33456 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:13:14,713 basehttp 27644 7376 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:13:15,029 basehttp 27644 33456 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:13:36,930 basehttp 27644 18096 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:13:36,955 basehttp 27644 18096 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:13:37,063 basehttp 27644 18096 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:13:37,083 basehttp 27644 18096 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:13:37,205 basehttp 27644 14572 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:13:37,411 basehttp 27644 18096 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:13:37,605 basehttp 27644 14572 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:13:37,606 basehttp 27644 18096 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:13:37,642 basehttp 27644 18096 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:13:37,731 basehttp 27644 14572 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:13:37,743 basehttp 27644 14572 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:13:37,924 basehttp 27644 6672 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:13:38,205 basehttp 27644 14572 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:13:38,527 basehttp 27644 6672 "GET /api/users/ HTTP/1.1" 200 22146
+ERROR 2025-07-14 03:17:50,238 views 32396 32492 Registration failed - Unexpected error: 'User' object has no attribute 'userskill_set'
+ERROR 2025-07-14 03:17:50,238 log 32396 32492 Internal Server Error: /api/auth/register/
+ERROR 2025-07-14 03:17:50,924 views 32396 32492 Registration failed - Unexpected error: 'User' object has no attribute 'userskill_set'
+ERROR 2025-07-14 03:17:50,941 log 32396 32492 Internal Server Error: /api/auth/register/
+INFO 2025-07-14 03:17:51,293 views 32396 32492 User logged in: admin
+ERROR 2025-07-14 03:17:51,315 views 32396 32492 Admin dashboard failed: Cannot resolve keyword 'swaprequest_requester' into field. Choices are: availability, avatar, badges, bio, date_joined, email, first_name, groups, id, is_active, is_public, is_staff, is_superuser, joined_at, last_login, last_name, location, logentry, notifications, password, rating, ratings_given, ratings_received, received_requests, role, sent_requests, skills, total_completed_swaps, total_ratings, updated_at, user_permissions, username
+ERROR 2025-07-14 03:17:51,315 log 32396 32492 Internal Server Error: /api/users/admin_dashboard/
+INFO 2025-07-14 03:18:08,141 autoreload 27644 24480 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:18:09,524 autoreload 31140 30264 Watching for file changes with StatReloader
+INFO 2025-07-14 03:18:15,299 autoreload 31140 30264 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:18:17,530 autoreload 33624 27804 Watching for file changes with StatReloader
+INFO 2025-07-14 03:18:19,969 autoreload 33624 27804 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:18:21,336 autoreload 29000 22628 Watching for file changes with StatReloader
+INFO 2025-07-14 03:18:27,920 autoreload 29000 22628 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:18:29,746 autoreload 19500 24240 Watching for file changes with StatReloader
+INFO 2025-07-14 03:18:33,826 autoreload 19500 24240 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:18:35,698 autoreload 25072 30648 Watching for file changes with StatReloader
+INFO 2025-07-14 03:18:38,257 autoreload 25072 30648 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:18:40,385 autoreload 33068 26096 Watching for file changes with StatReloader
+INFO 2025-07-14 03:18:44,478 autoreload 33068 26096 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:18:46,030 autoreload 22904 26996 Watching for file changes with StatReloader
+ERROR 2025-07-14 03:21:11,233 views 28864 13044 Registration failed - Unexpected error: {'email': [ErrorDetail(string='User with this email already exists.', code='invalid')]}
+ERROR 2025-07-14 03:21:11,235 log 28864 13044 Internal Server Error: /api/auth/register/
+ERROR 2025-07-14 03:21:11,235 views 28864 13044 Registration failed - Unexpected error: {'email': [ErrorDetail(string='User with this email already exists.', code='invalid')]}
+ERROR 2025-07-14 03:21:11,235 log 28864 13044 Internal Server Error: /api/auth/register/
+INFO 2025-07-14 03:21:11,585 views 28864 13044 User logged in: admin
+ERROR 2025-07-14 03:21:11,685 views 28864 13044 Admin dashboard failed: cannot import name 'SwapRequestSerializer' from 'swaps.serializers' (D:\Projects\odoo-2025\backend\swaps\serializers.py)
+ERROR 2025-07-14 03:21:11,685 log 28864 13044 Internal Server Error: /api/users/admin_dashboard/
+INFO 2025-07-14 03:22:43,266 autoreload 22904 26996 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:22:44,837 autoreload 27412 8288 Watching for file changes with StatReloader
+ERROR 2025-07-14 03:24:21,400 views 10436 22864 Registration failed - Unexpected error: {'email': [ErrorDetail(string='User with this email already exists.', code='invalid')]}
+ERROR 2025-07-14 03:24:21,400 log 10436 22864 Internal Server Error: /api/auth/register/
+ERROR 2025-07-14 03:24:21,400 views 10436 22864 Registration failed - Unexpected error: {'email': [ErrorDetail(string='User with this email already exists.', code='invalid')]}
+ERROR 2025-07-14 03:24:21,400 log 10436 22864 Internal Server Error: /api/auth/register/
+INFO 2025-07-14 03:24:21,735 views 10436 22864 User logged in: admin
+INFO 2025-07-14 03:25:14,095 autoreload 7912 10000 Watching for file changes with StatReloader
+INFO 2025-07-14 03:25:39,290 basehttp 7912 12072 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:25:39,307 basehttp 7912 12072 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:25:39,378 basehttp 7912 12072 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:25:39,519 basehttp 7912 11472 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:25:39,640 basehttp 7912 12072 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:25:39,993 basehttp 7912 11472 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:26:13,861 basehttp 7912 11472 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:26:22,383 views 7912 11472 User logged in: ahmedhassan
+INFO 2025-07-14 03:26:22,383 basehttp 7912 11472 "POST /api/auth/login/ HTTP/1.1" 200 2037
+INFO 2025-07-14 03:26:22,741 basehttp 7912 11472 "GET /api/users/ HTTP/1.1" 200 22146
+INFO 2025-07-14 03:27:34,037 views 7912 11472 User logged in: admin
+INFO 2025-07-14 03:27:34,037 basehttp 7912 11472 "POST /api/auth/login/ HTTP/1.1" 200 1459
+INFO 2025-07-14 03:27:55,121 basehttp 7912 11472 "OPTIONS /api/users/8/admin_update/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:27:55,318 views 7912 11472 Admin updated user: priyapatel
+INFO 2025-07-14 03:27:55,318 basehttp 7912 11472 "PATCH /api/users/8/admin_update/ HTTP/1.1" 200 181
+INFO 2025-07-14 03:27:59,273 views 7912 11472 Admin updated user: priyapatel
+INFO 2025-07-14 03:27:59,273 basehttp 7912 11472 "PATCH /api/users/8/admin_update/ HTTP/1.1" 200 182
+INFO 2025-07-14 03:28:04,294 views 7912 11472 Admin updated user: priyapatel
+INFO 2025-07-14 03:28:04,295 basehttp 7912 11472 "PATCH /api/users/8/admin_update/ HTTP/1.1" 200 181
+INFO 2025-07-14 03:28:11,120 basehttp 7912 11472 "OPTIONS /api/users/3/ban/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:28:11,308 views 7912 11472 Admin banned user: ahmedhassan
+INFO 2025-07-14 03:28:11,308 basehttp 7912 11472 "POST /api/users/3/ban/ HTTP/1.1" 200 55
+INFO 2025-07-14 03:28:16,059 views 7912 11472 Admin banned user: ahmedhassan
+INFO 2025-07-14 03:28:16,059 basehttp 7912 11472 "POST /api/users/3/ban/ HTTP/1.1" 200 55
+INFO 2025-07-14 03:28:24,837 views 7912 11472 User logged in: priyapatel
+INFO 2025-07-14 03:28:24,837 basehttp 7912 11472 "POST /api/auth/login/ HTTP/1.1" 200 2112
+INFO 2025-07-14 03:28:25,169 basehttp 7912 11472 "GET /api/users/ HTTP/1.1" 200 22025
+WARNING 2025-07-14 03:28:42,404 log 7912 11472 Unauthorized: /api/auth/login/
+WARNING 2025-07-14 03:28:42,404 basehttp 7912 11472 "POST /api/auth/login/ HTTP/1.1" 401 37
+INFO 2025-07-14 03:28:48,280 views 7912 11472 User logged in: admin
+INFO 2025-07-14 03:28:48,280 basehttp 7912 11472 "POST /api/auth/login/ HTTP/1.1" 200 1459
+INFO 2025-07-14 03:31:48,067 autoreload 7912 10000 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:31:49,240 autoreload 4092 23000 Watching for file changes with StatReloader
+INFO 2025-07-14 03:31:57,896 autoreload 4092 23000 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:31:59,673 autoreload 19936 29732 Watching for file changes with StatReloader
+INFO 2025-07-14 03:32:03,097 autoreload 19936 29732 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:32:04,506 autoreload 11736 24872 Watching for file changes with StatReloader
+INFO 2025-07-14 03:32:24,047 basehttp 11736 29796 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:32:24,054 basehttp 11736 29796 "OPTIONS /api/users/admin_dashboard/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:32:24,658 basehttp 11736 29796 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+INFO 2025-07-14 03:32:24,664 basehttp 11736 29796 "OPTIONS /api/users/admin_users_detailed/ HTTP/1.1" 200 0
+ERROR 2025-07-14 03:32:24,692 views 11736 29796 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:32:24,694 log 11736 29796 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:32:24,695 basehttp 11736 29796 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:32:37,917 basehttp 11736 21644 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:32:38,333 basehttp 11736 21644 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:32:38,370 views 11736 21644 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:32:38,371 log 11736 21644 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:32:38,371 basehttp 11736 21644 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:32:38,586 basehttp 11736 21644 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:32:39,064 basehttp 11736 21644 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:32:39,103 views 11736 21644 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:32:39,107 log 11736 21644 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:32:39,108 basehttp 11736 21644 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:33:54,918 basehttp 11736 28616 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:33:55,754 basehttp 11736 28616 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:33:55,795 views 11736 28616 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:33:55,796 log 11736 28616 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:33:55,798 basehttp 11736 28616 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:33:56,589 basehttp 11736 28616 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:33:56,949 basehttp 11736 28616 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:33:56,962 views 11736 28616 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:33:56,962 log 11736 28616 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:33:56,973 basehttp 11736 28616 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:33:58,579 basehttp 11736 28616 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:33:58,988 basehttp 11736 28616 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:33:59,004 views 11736 28616 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:33:59,004 log 11736 28616 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:33:59,004 basehttp 11736 28616 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:34:19,901 basehttp 11736 22256 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:34:21,134 basehttp 11736 22256 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:34:21,193 views 11736 22256 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:34:21,193 log 11736 22256 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:34:21,199 basehttp 11736 22256 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:34:22,581 basehttp 11736 22256 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:34:22,976 basehttp 11736 22256 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:34:23,016 views 11736 22256 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:34:23,017 log 11736 22256 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:34:23,018 basehttp 11736 22256 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:34:24,594 basehttp 11736 22256 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:34:25,046 basehttp 11736 22256 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:34:25,068 views 11736 22256 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:34:25,068 log 11736 22256 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:34:25,073 basehttp 11736 22256 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:35:20,896 basehttp 11736 18232 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:35:21,630 basehttp 11736 18232 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:35:21,663 views 11736 18232 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:35:21,663 log 11736 18232 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:35:21,680 basehttp 11736 18232 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:35:26,584 basehttp 11736 18232 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:35:27,037 basehttp 11736 18232 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:35:27,064 views 11736 18232 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:35:27,065 log 11736 18232 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:35:27,066 basehttp 11736 18232 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:35:37,916 basehttp 11736 31272 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:35:38,818 basehttp 11736 31272 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:35:38,864 views 11736 31272 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:35:38,865 log 11736 31272 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:35:38,866 basehttp 11736 31272 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:35:42,601 basehttp 11736 31272 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:35:42,935 basehttp 11736 31272 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:35:42,951 views 11736 31272 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:35:42,951 log 11736 31272 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:35:42,951 basehttp 11736 31272 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:41:06,001 basehttp 11736 13780 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:41:07,252 basehttp 11736 13780 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:41:07,299 views 11736 13780 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:41:07,299 log 11736 13780 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:41:07,316 basehttp 11736 13780 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:41:43,527 basehttp 11736 29636 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:41:44,095 basehttp 11736 29636 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:41:44,123 views 11736 29636 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:41:44,124 log 11736 29636 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:41:44,125 basehttp 11736 29636 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:42:41,848 autoreload 26688 5732 Watching for file changes with StatReloader
+INFO 2025-07-14 03:42:45,911 basehttp 26688 31992 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:42:46,531 basehttp 26688 31992 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:42:46,559 views 26688 31992 Admin users detailed failed: Cannot resolve keyword 'requester' into field. Choices are: created_at, from_user, from_user_id, id, message, ratings, response_message, skill_offered, skill_offered_id, skill_wanted, skill_wanted_id, status, to_user, to_user_id, updated_at
+ERROR 2025-07-14 03:42:46,561 log 26688 31992 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:42:46,562 basehttp 26688 31992 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:43:11,682 autoreload 26688 5732 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:43:13,658 autoreload 2972 32116 Watching for file changes with StatReloader
+INFO 2025-07-14 03:43:18,383 views 2972 15240 User logged in: johnmartinez
+INFO 2025-07-14 03:43:18,398 basehttp 2972 15240 "POST /api/auth/login/ HTTP/1.1" 200 2258
+INFO 2025-07-14 03:43:18,982 basehttp 2972 15240 "GET /api/users/ HTTP/1.1" 200 22025
+INFO 2025-07-14 03:43:21,049 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:21,134 basehttp 2972 15240 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:21,350 basehttp 2972 26160 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:21,420 basehttp 2972 32556 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:21,498 basehttp 2972 26160 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:21,620 basehttp 2972 26160 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:21,700 basehttp 2972 32556 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:21,812 basehttp 2972 32556 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:21,947 basehttp 2972 26328 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:21,988 basehttp 2972 26160 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:22,033 basehttp 2972 26328 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:22,145 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:22,284 basehttp 2972 26160 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:22,388 basehttp 2972 26160 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:22,419 basehttp 2972 32556 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:22,511 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:22,526 basehttp 2972 32556 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:22,624 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:22,845 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:22,990 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:23,051 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:23,112 basehttp 2972 26160 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:23,171 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:23,209 basehttp 2972 26160 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:23,236 basehttp 2972 15240 "GET /api/users/ HTTP/1.1" 200 22025
+INFO 2025-07-14 03:43:23,294 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:23,384 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:23,449 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:23,568 basehttp 2972 15240 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:23,715 basehttp 2972 32556 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:23,790 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:23,864 basehttp 2972 32556 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:23,942 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:23,995 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:24,110 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:24,144 basehttp 2972 15240 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:24,230 basehttp 2972 15240 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:24,267 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:24,383 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:24,428 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:24,507 basehttp 2972 15240 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:24,524 basehttp 2972 26328 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:24,580 basehttp 2972 26328 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:24,620 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:24,727 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:24,830 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:24,891 basehttp 2972 15240 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:24,920 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:24,960 basehttp 2972 15240 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:25,067 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:25,198 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:25,255 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:25,336 basehttp 2972 32556 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:25,378 basehttp 2972 15240 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:25,431 basehttp 2972 32556 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:25,459 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:25,560 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:25,673 basehttp 2972 32556 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:25,783 basehttp 2972 32556 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:25,809 basehttp 2972 26328 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:25,880 basehttp 2972 26328 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:25,900 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:26,066 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:26,156 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:26,271 basehttp 2972 26160 "GET /api/users/ HTTP/1.1" 200 22025
+INFO 2025-07-14 03:43:26,293 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:26,387 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:26,392 basehttp 2972 32556 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:26,565 basehttp 2972 660 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:26,569 basehttp 2972 32556 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:26,643 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:26,739 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:26,913 basehttp 2972 32556 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:26,937 basehttp 2972 26160 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:27,100 basehttp 2972 660 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:27,155 basehttp 2972 26160 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:27,170 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:27,321 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:27,490 basehttp 2972 26160 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:27,620 basehttp 2972 26160 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:27,759 basehttp 2972 32556 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:27,784 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:27,927 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:27,962 basehttp 2972 32556 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:28,198 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:28,340 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:28,481 basehttp 2972 26160 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:28,531 basehttp 2972 32556 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:28,586 basehttp 2972 26160 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:28,653 basehttp 2972 32556 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:28,688 basehttp 2972 15240 "GET /api/users/ HTTP/1.1" 200 22025
+INFO 2025-07-14 03:43:28,769 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:28,903 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:28,970 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:29,091 basehttp 2972 15240 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:29,184 basehttp 2972 660 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:29,226 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:29,348 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:29,366 basehttp 2972 660 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:29,503 basehttp 2972 26160 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:29,619 basehttp 2972 15240 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:29,681 basehttp 2972 26160 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:29,762 basehttp 2972 15240 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:29,887 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:30,001 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:30,087 basehttp 2972 26328 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:30,126 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:30,160 basehttp 2972 26328 "GET /api/swaps/received/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:30,205 basehttp 2972 15240 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:30,340 basehttp 2972 26160 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:30,454 basehttp 2972 26160 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 03:43:30,698 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:30,821 basehttp 2972 660 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+WARNING 2025-07-14 03:43:30,845 log 2972 15240 Unauthorized: /api/notifications/
+WARNING 2025-07-14 03:43:30,864 log 2972 660 Unauthorized: /api/swaps/received/
+WARNING 2025-07-14 03:43:30,875 basehttp 2972 15240 "GET /api/notifications/ HTTP/1.1" 401 57
+WARNING 2025-07-14 03:43:30,906 basehttp 2972 660 "GET /api/swaps/received/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:30,944 basehttp 2972 26160 "GET /api/users/me/ HTTP/1.1" 200 1767
+WARNING 2025-07-14 03:43:30,984 log 2972 26160 Unauthorized: /api/notifications/
+WARNING 2025-07-14 03:43:31,013 basehttp 2972 26160 "GET /api/notifications/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:31,185 basehttp 2972 26328 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+WARNING 2025-07-14 03:43:31,221 log 2972 26328 Unauthorized: /api/swaps/received/
+WARNING 2025-07-14 03:43:31,261 basehttp 2972 26328 "GET /api/swaps/received/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:31,365 basehttp 2972 660 "GET /api/users/me/ HTTP/1.1" 200 1767
+WARNING 2025-07-14 03:43:31,407 log 2972 660 Unauthorized: /api/notifications/
+WARNING 2025-07-14 03:43:31,427 basehttp 2972 660 "GET /api/notifications/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:31,620 basehttp 2972 26328 "GET /api/users/me/ HTTP/1.1" 200 1767
+WARNING 2025-07-14 03:43:31,663 log 2972 26328 Unauthorized: /api/notifications/
+WARNING 2025-07-14 03:43:31,689 basehttp 2972 26328 "GET /api/notifications/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:31,889 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:32,122 basehttp 2972 26160 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+INFO 2025-07-14 03:43:32,315 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+WARNING 2025-07-14 03:43:32,396 log 2972 26160 Unauthorized: /api/notifications/
+WARNING 2025-07-14 03:43:32,414 log 2972 26112 Unauthorized: /api/swaps/received/
+WARNING 2025-07-14 03:43:32,436 basehttp 2972 26160 "GET /api/notifications/ HTTP/1.1" 401 57
+WARNING 2025-07-14 03:43:32,439 basehttp 2972 26112 "GET /api/swaps/received/ HTTP/1.1" 401 57
+WARNING 2025-07-14 03:43:32,557 log 2972 26112 Unauthorized: /api/notifications/
+WARNING 2025-07-14 03:43:32,614 basehttp 2972 26112 "GET /api/notifications/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:32,778 basehttp 2972 15240 "GET /api/users/me/ HTTP/1.1" 200 1767
+WARNING 2025-07-14 03:43:32,832 log 2972 15240 Unauthorized: /api/notifications/
+WARNING 2025-07-14 03:43:32,882 basehttp 2972 15240 "GET /api/notifications/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:33,330 basehttp 2972 7324 "GET /api/users/me/ HTTP/1.1" 200 1767
+WARNING 2025-07-14 03:43:33,450 log 2972 27868 Unauthorized: /api/notifications/
+WARNING 2025-07-14 03:43:33,514 basehttp 2972 27868 "GET /api/notifications/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:33,613 basehttp 2972 27628 "GET /api/swaps/sent/ HTTP/1.1" 200 3559
+WARNING 2025-07-14 03:43:33,652 log 2972 31676 Unauthorized: /api/swaps/received/
+WARNING 2025-07-14 03:43:33,714 basehttp 2972 31676 "GET /api/swaps/received/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:35,117 basehttp 2972 7464 "GET /api/users/me/ HTTP/1.1" 200 1767
+INFO 2025-07-14 03:43:35,138 views 2972 14868 User logged in: priyapatel
+WARNING 2025-07-14 03:43:35,193 log 2972 13636 Unauthorized: /api/notifications/
+INFO 2025-07-14 03:43:35,256 basehttp 2972 14868 "POST /api/auth/login/ HTTP/1.1" 200 2112
+WARNING 2025-07-14 03:43:35,358 basehttp 2972 13636 "GET /api/notifications/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:35,545 basehttp 2972 33380 "OPTIONS /api/auth/token/refresh/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:43:35,944 basehttp 2972 32556 - Broken pipe from ('127.0.0.1', 41496)
+INFO 2025-07-14 03:43:36,046 basehttp 2972 26340 "POST /api/auth/token/refresh/ HTTP/1.1" 200 241
+INFO 2025-07-14 03:43:36,433 basehttp 2972 27628 - Broken pipe from ('127.0.0.1', 41525)
+INFO 2025-07-14 03:43:36,639 basehttp 2972 26340 "GET /api/notifications/ HTTP/1.1" 200 326
+INFO 2025-07-14 03:43:36,871 basehttp 2972 10496 - Broken pipe from ('127.0.0.1', 41559)
+INFO 2025-07-14 03:43:38,171 basehttp 2972 10396 - Broken pipe from ('127.0.0.1', 41577)
+INFO 2025-07-14 03:43:38,485 basehttp 2972 33380 - Broken pipe from ('127.0.0.1', 41565)
+INFO 2025-07-14 03:43:38,923 basehttp 2972 30320 - Broken pipe from ('127.0.0.1', 41587)
+INFO 2025-07-14 03:43:38,996 basehttp 2972 19312 - Broken pipe from ('127.0.0.1', 41583)
+INFO 2025-07-14 03:43:39,011 basehttp 2972 27136 - Broken pipe from ('127.0.0.1', 41573)
+INFO 2025-07-14 03:43:39,335 basehttp 2972 29380 - Broken pipe from ('127.0.0.1', 41594)
+INFO 2025-07-14 03:43:39,500 basehttp 2972 26340 - Broken pipe from ('127.0.0.1', 41570)
+WARNING 2025-07-14 03:43:40,669 log 2972 15260 Unauthorized: /api/swaps/sent/
+INFO 2025-07-14 03:43:40,933 basehttp 2972 15260 - Broken pipe from ('127.0.0.1', 41656)
+WARNING 2025-07-14 03:43:40,935 log 2972 31216 Unauthorized: /api/swaps/sent/
+INFO 2025-07-14 03:43:41,041 basehttp 2972 31216 - Broken pipe from ('127.0.0.1', 41659)
+WARNING 2025-07-14 03:43:41,327 log 2972 25736 Unauthorized: /api/swaps/sent/
+INFO 2025-07-14 03:43:41,397 basehttp 2972 25736 - Broken pipe from ('127.0.0.1', 41666)
+WARNING 2025-07-14 03:43:41,861 log 2972 22540 Unauthorized: /api/swaps/sent/
+WARNING 2025-07-14 03:43:41,927 basehttp 2972 22540 "GET /api/swaps/sent/ HTTP/1.1" 401 57
+WARNING 2025-07-14 03:43:42,080 log 2972 22540 Unauthorized: /api/swaps/sent/
+WARNING 2025-07-14 03:43:42,195 log 2972 23052 Unauthorized: /api/swaps/sent/
+WARNING 2025-07-14 03:43:42,199 basehttp 2972 22540 "GET /api/swaps/sent/ HTTP/1.1" 401 57
+WARNING 2025-07-14 03:43:42,259 basehttp 2972 23052 "GET /api/swaps/sent/ HTTP/1.1" 401 57
+WARNING 2025-07-14 03:43:42,312 log 2972 22540 Unauthorized: /api/swaps/sent/
+WARNING 2025-07-14 03:43:42,457 basehttp 2972 22540 "GET /api/swaps/sent/ HTTP/1.1" 401 57
+WARNING 2025-07-14 03:43:42,466 log 2972 29392 Unauthorized: /api/swaps/sent/
+WARNING 2025-07-14 03:43:42,567 basehttp 2972 29392 "GET /api/swaps/sent/ HTTP/1.1" 401 57
+INFO 2025-07-14 03:43:43,761 basehttp 2972 32268 - Broken pipe from ('127.0.0.1', 41586)
+INFO 2025-07-14 03:43:44,015 basehttp 2972 21676 - Broken pipe from ('127.0.0.1', 41581)
+INFO 2025-07-14 03:43:45,009 basehttp 2972 32752 - Broken pipe from ('127.0.0.1', 41590)
+INFO 2025-07-14 03:43:45,942 basehttp 2972 29204 - Broken pipe from ('127.0.0.1', 41611)
+INFO 2025-07-14 03:43:46,290 basehttp 2972 27984 - Broken pipe from ('127.0.0.1', 41596)
+INFO 2025-07-14 03:43:46,321 basehttp 2972 26796 - Broken pipe from ('127.0.0.1', 41604)
+INFO 2025-07-14 03:43:46,363 basehttp 2972 31604 "GET /api/users/me/ HTTP/1.1" 200 1621
+INFO 2025-07-14 03:43:47,234 basehttp 2972 21836 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:47,531 basehttp 2972 33384 "GET /api/notifications/ HTTP/1.1" 200 326
+INFO 2025-07-14 03:43:47,619 basehttp 2972 19464 - Broken pipe from ('127.0.0.1', 41616)
+INFO 2025-07-14 03:43:48,408 basehttp 2972 24748 - Broken pipe from ('127.0.0.1', 41640)
+INFO 2025-07-14 03:43:48,439 basehttp 2972 25328 - Broken pipe from ('127.0.0.1', 41643)
+INFO 2025-07-14 03:43:48,574 basehttp 2972 31596 - Broken pipe from ('127.0.0.1', 41633)
+INFO 2025-07-14 03:43:48,574 basehttp 2972 15600 - Broken pipe from ('127.0.0.1', 41625)
+INFO 2025-07-14 03:43:48,984 basehttp 2972 22144 - Broken pipe from ('127.0.0.1', 41635)
+INFO 2025-07-14 03:43:49,258 basehttp 2972 28112 - Broken pipe from ('127.0.0.1', 41651)
+INFO 2025-07-14 03:43:49,302 basehttp 2972 30508 "GET /api/users/me/ HTTP/1.1" 200 1621
+INFO 2025-07-14 03:43:50,215 basehttp 2972 28568 "GET /api/swaps/sent/ HTTP/1.1" 200 2
+INFO 2025-07-14 03:43:50,252 basehttp 2972 30508 "GET /api/notifications/ HTTP/1.1" 200 326
+INFO 2025-07-14 03:43:52,170 basehttp 2972 26328 - Broken pipe from ('127.0.0.1', 41497)
+INFO 2025-07-14 03:43:52,696 basehttp 2972 33384 - Broken pipe from ('127.0.0.1', 41699)
+INFO 2025-07-14 03:43:54,784 basehttp 2972 21836 "GET /api/swaps/received/ HTTP/1.1" 200 3344
+INFO 2025-07-14 03:43:55,042 basehttp 2972 13448 - Broken pipe from ('127.0.0.1', 41716)
+INFO 2025-07-14 03:44:53,686 autoreload 25360 28992 Watching for file changes with StatReloader
+INFO 2025-07-14 03:44:59,676 basehttp 25360 9692 "GET /api/users/ HTTP/1.1" 200 22025
+INFO 2025-07-14 03:45:07,232 views 25360 21600 User logged in: admin
+INFO 2025-07-14 03:45:07,244 basehttp 25360 21600 "POST /api/auth/login/ HTTP/1.1" 200 1459
+INFO 2025-07-14 03:47:12,989 basehttp 25360 33700 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:47:13,547 basehttp 25360 33700 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:47:13,593 views 25360 33700 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:47:13,594 log 25360 33700 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:47:13,595 basehttp 25360 33700 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:47:24,600 basehttp 25360 33700 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:47:25,416 basehttp 25360 33700 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:47:25,478 views 25360 33700 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:47:25,479 log 25360 33700 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:47:25,483 basehttp 25360 33700 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:47:29,595 basehttp 25360 33700 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:47:29,960 basehttp 25360 33700 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:47:29,981 views 25360 33700 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:47:29,981 log 25360 33700 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:47:29,981 basehttp 25360 33700 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:48:09,603 basehttp 25360 33700 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:48:10,338 basehttp 25360 33700 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:48:10,378 views 25360 33700 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:48:10,378 log 25360 33700 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:48:10,378 basehttp 25360 33700 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:48:14,614 basehttp 25360 33700 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:48:14,965 basehttp 25360 33700 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:48:15,003 views 25360 33700 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:48:15,004 log 25360 33700 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:48:15,006 basehttp 25360 33700 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:48:27,917 basehttp 25360 29816 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:48:28,798 basehttp 25360 29816 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:48:28,853 views 25360 29816 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:48:28,856 log 25360 29816 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:48:28,857 basehttp 25360 29816 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:48:32,593 basehttp 25360 29816 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:48:33,017 basehttp 25360 29816 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:48:33,044 views 25360 29816 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:48:33,044 log 25360 29816 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:48:33,044 basehttp 25360 29816 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:48:42,907 basehttp 25360 30400 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:48:43,568 basehttp 25360 30400 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:48:43,604 views 25360 30400 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:48:43,604 log 25360 30400 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:48:43,614 basehttp 25360 30400 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:48:47,890 basehttp 25360 24404 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:48:48,297 basehttp 25360 24404 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:48:48,302 views 25360 24404 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:48:48,318 log 25360 24404 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:48:48,318 basehttp 25360 24404 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:49:00,899 basehttp 25360 20372 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:49:01,592 basehttp 25360 20372 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:49:01,630 views 25360 20372 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:49:01,645 log 25360 20372 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:49:01,647 basehttp 25360 20372 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:49:05,599 basehttp 25360 20372 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:49:05,955 basehttp 25360 20372 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:49:05,975 views 25360 20372 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:49:05,976 log 25360 20372 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:49:05,977 basehttp 25360 20372 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:49:15,899 basehttp 25360 22156 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:49:16,649 basehttp 25360 22156 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:49:16,688 views 25360 22156 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:49:16,688 log 25360 22156 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:49:16,688 basehttp 25360 22156 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:49:28,892 basehttp 25360 5816 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:49:29,398 basehttp 25360 5816 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:49:29,418 views 25360 5816 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:49:29,419 log 25360 5816 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:49:29,421 basehttp 25360 5816 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:51:34,548 autoreload 28316 12216 Watching for file changes with StatReloader
+INFO 2025-07-14 03:51:50,268 basehttp 28316 15720 "GET /api/users/me/ HTTP/1.1" 200 965
+INFO 2025-07-14 03:51:51,543 basehttp 28316 15720 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 43020
+ERROR 2025-07-14 03:51:51,604 views 28316 15720 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:51:51,606 log 28316 15720 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:51:51,609 basehttp 28316 15720 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:55:45,922 basehttp 28316 16404 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 03:55:46,378 basehttp 28316 16404 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+ERROR 2025-07-14 03:55:46,412 views 28316 16404 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:55:46,413 log 28316 16404 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:55:46,414 basehttp 28316 16404 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:57:15,534 basehttp 28316 32172 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 03:57:16,173 basehttp 28316 32172 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+ERROR 2025-07-14 03:57:16,226 views 28316 32172 Admin users detailed failed: Cannot resolve keyword 'rated_user' into field. Choices are: created_at, feedback, from_user, from_user_id, id, score, swap_request, swap_request_id, to_user, to_user_id
+ERROR 2025-07-14 03:57:16,229 log 28316 32172 Internal Server Error: /api/users/admin_users_detailed/
+ERROR 2025-07-14 03:57:16,230 basehttp 28316 32172 "GET /api/users/admin_users_detailed/ HTTP/1.1" 500 64
+INFO 2025-07-14 03:57:40,856 autoreload 28316 12216 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 03:57:41,988 autoreload 2404 20376 Watching for file changes with StatReloader
+INFO 2025-07-14 03:58:13,622 basehttp 2404 32988 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 03:58:14,676 basehttp 2404 32988 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 03:58:15,313 basehttp 2404 32988 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 03:58:15,320 basehttp 2404 32988 "OPTIONS /api/swaps/ HTTP/1.1" 200 0
+INFO 2025-07-14 03:58:16,703 basehttp 2404 32988 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 03:58:16,736 basehttp 2404 32988 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:00:32,683 basehttp 2404 20628 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 04:00:33,558 basehttp 2404 20628 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:00:34,681 basehttp 2404 20628 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:00:35,032 basehttp 2404 32300 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:00:36,651 basehttp 2404 32300 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:00:36,762 basehttp 2404 20628 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:00:36,778 basehttp 2404 20628 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:00:39,259 basehttp 2404 20628 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:00:40,206 basehttp 2404 32300 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:00:40,267 basehttp 2404 32300 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:00:42,188 basehttp 2404 20628 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:00:43,587 basehttp 2404 32300 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:00:45,019 basehttp 2404 20628 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:00:45,076 basehttp 2404 20628 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:00:45,315 basehttp 2404 32300 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:00:47,599 basehttp 2404 20628 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:00:49,297 basehttp 2404 32300 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:00:49,341 basehttp 2404 32300 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:00:50,065 basehttp 2404 20628 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:00:52,173 basehttp 2404 32300 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:00:52,266 basehttp 2404 32300 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 04:00:54,321 basehttp 2404 20628 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:00:54,387 basehttp 2404 20628 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:00:55,838 basehttp 2404 20628 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 04:00:56,037 basehttp 2404 32596 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:00:56,219 basehttp 2404 32300 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:00:56,554 basehttp 2404 20732 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 04:00:58,873 basehttp 2404 32300 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:00:59,021 basehttp 2404 20628 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:00:59,600 basehttp 2404 32596 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:00:59,971 basehttp 2404 32268 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:01:00,726 basehttp 2404 19724 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 04:01:02,891 basehttp 2404 20628 - Broken pipe from ('127.0.0.1', 43015)
+INFO 2025-07-14 04:01:03,446 basehttp 2404 32300 - Broken pipe from ('127.0.0.1', 43016)
+INFO 2025-07-14 04:01:04,683 basehttp 2404 32268 - Broken pipe from ('127.0.0.1', 43040)
+INFO 2025-07-14 04:01:04,953 basehttp 2404 32596 - Broken pipe from ('127.0.0.1', 43034)
+INFO 2025-07-14 04:01:04,983 basehttp 2404 19724 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:01:06,792 basehttp 2404 22428 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 04:01:07,653 basehttp 2404 19724 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:01:07,892 basehttp 2404 24796 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:01:10,806 basehttp 2404 22428 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:01:11,153 basehttp 2404 19724 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:01:12,147 basehttp 2404 24796 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:01:12,292 basehttp 2404 24796 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:01:13,845 basehttp 2404 22428 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:01:13,970 basehttp 2404 28972 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:01:14,682 basehttp 2404 28972 "GET /api/users/me/ HTTP/1.1" 200 964
+INFO 2025-07-14 04:01:14,781 basehttp 2404 19724 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:01:14,837 basehttp 2404 19724 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:01:15,516 basehttp 2404 22428 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:01:16,180 basehttp 2404 24796 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:01:16,844 basehttp 2404 28972 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:01:16,901 basehttp 2404 28972 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:01:18,087 basehttp 2404 24796 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:01:18,231 basehttp 2404 22428 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 46255
+INFO 2025-07-14 04:01:19,412 basehttp 2404 19724 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:01:19,655 basehttp 2404 22428 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:01:19,692 basehttp 2404 22428 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:01:20,391 basehttp 2404 19724 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:01:20,425 basehttp 2404 19724 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:01:21,604 basehttp 2404 22428 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:01:21,622 basehttp 2404 22428 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:02:03,002 views 2404 30888 Admin banned user: ahmedhassan
+INFO 2025-07-14 04:02:03,002 basehttp 2404 30888 "POST /api/users/3/ban/ HTTP/1.1" 200 55
+INFO 2025-07-14 04:02:06,956 views 2404 30888 Admin banned user: ahmedhassan
+INFO 2025-07-14 04:02:06,959 basehttp 2404 30888 "POST /api/users/3/ban/ HTTP/1.1" 200 55
+WARNING 2025-07-14 04:02:42,069 log 2404 16704 Unauthorized: /api/users/admin_dashboard/
+WARNING 2025-07-14 04:02:42,070 basehttp 2404 16704 "GET /api/users/admin_dashboard/ HTTP/1.1" 401 57
+WARNING 2025-07-14 04:02:42,598 log 2404 16704 Unauthorized: /api/users/admin_dashboard/
+WARNING 2025-07-14 04:02:42,598 basehttp 2404 16704 "GET /api/users/admin_dashboard/ HTTP/1.1" 401 57
+INFO 2025-07-14 04:02:45,051 views 2404 16704 User logged in: johnmartinez
+INFO 2025-07-14 04:02:45,051 basehttp 2404 16704 "POST /api/auth/login/ HTTP/1.1" 200 2256
+INFO 2025-07-14 04:02:45,551 basehttp 2404 16704 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:49,433 basehttp 2404 6496 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:49,449 basehttp 2404 6496 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:02:49,535 basehttp 2404 6496 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:02:50,045 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:50,180 basehttp 2404 21936 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:02:50,415 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:51,969 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,049 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,150 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,251 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,351 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,450 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,549 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,649 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,733 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:52,733 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,832 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:52,933 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,015 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,099 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,199 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,299 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,397 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,438 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:53,483 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,583 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,649 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,715 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,782 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,865 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:53,949 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,065 basehttp 2404 27120 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,065 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:54,132 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,265 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,347 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,415 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,516 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,582 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,682 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,749 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,789 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:54,848 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:54,915 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,000 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,083 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,182 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,265 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,349 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,465 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,534 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:55,582 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,665 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,748 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,832 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:55,932 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,017 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,115 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,199 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,216 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:56,250 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,338 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,432 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,518 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,598 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,683 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,781 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,848 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:56,916 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:56,949 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,032 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,115 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,182 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,265 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,382 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,549 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,734 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,865 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:57,915 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:57,998 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:58,081 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:58,164 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:58,283 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:58,383 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:58,516 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:02:58,597 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:58,965 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:59,279 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:59,482 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:59,748 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:02:59,999 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:00,219 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:00,564 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:00,896 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:00,947 basehttp 2404 6496 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:00,981 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,062 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,144 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,213 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,312 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,397 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,481 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,581 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,679 basehttp 2404 21936 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:03:01,708 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:02,015 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:02,331 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:02,630 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:02,902 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:03,137 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:03,414 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:03,770 basehttp 2404 21936 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:03,996 basehttp 2404 27120 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:03:04,415 basehttp 2404 21936 - Broken pipe from ('127.0.0.1', 43195)
+INFO 2025-07-14 04:03:05,727 basehttp 2404 27120 - Broken pipe from ('127.0.0.1', 43196)
+INFO 2025-07-14 04:03:06,311 basehttp 2404 6496 - Broken pipe from ('127.0.0.1', 43191)
+INFO 2025-07-14 04:03:07,111 basehttp 2404 33424 - Broken pipe from ('127.0.0.1', 43197)
+INFO 2025-07-14 04:03:07,697 basehttp 2404 20768 - Broken pipe from ('127.0.0.1', 43198)
+INFO 2025-07-14 04:03:11,158 basehttp 2404 29760 - Broken pipe from ('127.0.0.1', 43204)
+INFO 2025-07-14 04:03:11,551 basehttp 2404 28196 - Broken pipe from ('127.0.0.1', 43206)
+INFO 2025-07-14 04:03:12,683 basehttp 2404 19340 - Broken pipe from ('127.0.0.1', 43207)
+INFO 2025-07-14 04:03:13,242 basehttp 2404 31196 - Broken pipe from ('127.0.0.1', 43208)
+INFO 2025-07-14 04:03:13,860 basehttp 2404 28184 - Broken pipe from ('127.0.0.1', 43209)
+INFO 2025-07-14 04:03:14,895 basehttp 2404 29572 - Broken pipe from ('127.0.0.1', 43214)
+INFO 2025-07-14 04:03:15,112 basehttp 2404 33112 - Broken pipe from ('127.0.0.1', 43216)
+INFO 2025-07-14 04:03:16,097 basehttp 2404 24804 - Broken pipe from ('127.0.0.1', 43218)
+INFO 2025-07-14 04:03:16,329 basehttp 2404 31944 - Broken pipe from ('127.0.0.1', 43220)
+INFO 2025-07-14 04:03:16,520 basehttp 2404 3280 - Broken pipe from ('127.0.0.1', 43222)
+INFO 2025-07-14 04:03:16,655 basehttp 2404 25152 - Broken pipe from ('127.0.0.1', 43224)
+INFO 2025-07-14 04:03:16,671 basehttp 2404 12944 - Broken pipe from ('127.0.0.1', 43226)
+INFO 2025-07-14 04:03:16,711 basehttp 2404 27412 - Broken pipe from ('127.0.0.1', 43230)
+INFO 2025-07-14 04:03:16,757 basehttp 2404 17536 - Broken pipe from ('127.0.0.1', 43232)
+INFO 2025-07-14 04:03:16,805 basehttp 2404 27560 - Broken pipe from ('127.0.0.1', 43228)
+INFO 2025-07-14 04:03:16,990 basehttp 2404 1168 - Broken pipe from ('127.0.0.1', 43236)
+INFO 2025-07-14 04:03:17,246 basehttp 2404 33376 - Broken pipe from ('127.0.0.1', 43238)
+INFO 2025-07-14 04:03:17,317 basehttp 2404 31328 - Broken pipe from ('127.0.0.1', 43234)
+INFO 2025-07-14 04:03:17,400 basehttp 2404 7396 - Broken pipe from ('127.0.0.1', 43240)
+INFO 2025-07-14 04:03:17,442 basehttp 2404 31848 - Broken pipe from ('127.0.0.1', 43248)
+INFO 2025-07-14 04:03:17,508 basehttp 2404 14032 - Broken pipe from ('127.0.0.1', 43250)
+INFO 2025-07-14 04:03:17,544 basehttp 2404 33364 - Broken pipe from ('127.0.0.1', 43246)
+INFO 2025-07-14 04:03:17,560 basehttp 2404 19068 - Broken pipe from ('127.0.0.1', 43252)
+INFO 2025-07-14 04:03:17,618 basehttp 2404 3272 - Broken pipe from ('127.0.0.1', 43244)
+INFO 2025-07-14 04:03:17,625 basehttp 2404 11528 - Broken pipe from ('127.0.0.1', 43242)
+INFO 2025-07-14 04:03:17,627 basehttp 2404 16712 - Broken pipe from ('127.0.0.1', 43253)
+INFO 2025-07-14 04:03:17,719 basehttp 2404 18288 - Broken pipe from ('127.0.0.1', 43254)
+INFO 2025-07-14 04:03:17,801 basehttp 2404 19116 - Broken pipe from ('127.0.0.1', 43255)
+INFO 2025-07-14 04:03:17,857 basehttp 2404 12316 - Broken pipe from ('127.0.0.1', 43260)
+INFO 2025-07-14 04:03:17,923 basehttp 2404 17848 - Broken pipe from ('127.0.0.1', 43262)
+INFO 2025-07-14 04:03:17,937 basehttp 2404 32732 - Broken pipe from ('127.0.0.1', 43261)
+INFO 2025-07-14 04:03:18,425 basehttp 2404 30332 - Broken pipe from ('127.0.0.1', 43276)
+INFO 2025-07-14 04:03:18,458 basehttp 2404 14972 - Broken pipe from ('127.0.0.1', 43263)
+INFO 2025-07-14 04:03:18,460 basehttp 2404 13760 - Broken pipe from ('127.0.0.1', 43268)
+INFO 2025-07-14 04:03:18,461 basehttp 2404 30488 - Broken pipe from ('127.0.0.1', 43274)
+INFO 2025-07-14 04:03:18,473 basehttp 2404 28420 - Broken pipe from ('127.0.0.1', 43272)
+INFO 2025-07-14 04:03:18,477 basehttp 2404 352 - Broken pipe from ('127.0.0.1', 43270)
+INFO 2025-07-14 04:05:42,778 autoreload 2404 20376 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 04:05:46,556 autoreload 19392 24208 Watching for file changes with StatReloader
+INFO 2025-07-14 04:05:48,934 autoreload 19392 24208 D:\Projects\odoo-2025\backend\users\views.py changed, reloading.
+INFO 2025-07-14 04:05:50,752 autoreload 29064 31136 Watching for file changes with StatReloader
+INFO 2025-07-14 04:06:00,280 basehttp 29064 27020 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:06:07,870 basehttp 29064 27020 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:13:35,445 basehttp 29064 28828 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:14:07,739 basehttp 29064 24316 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:14:29,364 basehttp 29064 15520 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:14:31,981 basehttp 29064 15520 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:15:09,348 views 29064 26584 User logged in: johnmartinez
+INFO 2025-07-14 04:15:09,348 basehttp 29064 26584 "POST /api/auth/login/ HTTP/1.1" 200 2256
+INFO 2025-07-14 04:15:10,160 basehttp 29064 26584 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:15:12,300 basehttp 29064 26584 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:15:12,975 basehttp 29064 26584 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:15:25,106 basehttp 29064 30252 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:15:25,143 basehttp 29064 30252 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:15:25,248 basehttp 29064 30252 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:15:25,438 basehttp 29064 32624 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:15:25,516 basehttp 29064 32624 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:15:25,689 basehttp 29064 3788 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:15:25,946 basehttp 29064 30252 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:15:26,274 basehttp 29064 32344 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:15:26,761 basehttp 29064 3788 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:15:27,250 basehttp 29064 30252 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:15:27,514 basehttp 29064 32344 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:15:27,961 basehttp 29064 30252 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:15:28,425 basehttp 29064 32344 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:15:33,091 basehttp 29064 32344 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:15:33,681 basehttp 29064 32344 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:17:04,340 basehttp 29064 32344 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:17:04,391 basehttp 29064 32344 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:17:04,497 basehttp 29064 30252 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:17:05,083 basehttp 29064 3788 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:17:05,273 basehttp 29064 30252 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:17:05,553 basehttp 29064 32344 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:17:06,531 basehttp 29064 32344 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:17:06,844 basehttp 29064 32344 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:17:26,125 basehttp 29064 15988 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:17:26,178 basehttp 29064 15988 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:17:26,383 basehttp 29064 15988 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:17:27,393 basehttp 29064 19888 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:17:27,619 basehttp 29064 15988 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:17:28,117 basehttp 29064 31076 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:18:32,026 basehttp 29064 31576 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:18:32,079 basehttp 29064 31576 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:18:32,207 basehttp 29064 31576 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:18:32,468 basehttp 29064 10588 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:18:32,865 basehttp 29064 31576 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:18:33,076 basehttp 29064 8356 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:18:33,411 basehttp 29064 31576 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:08,033 basehttp 29064 23600 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:20:08,079 basehttp 29064 23600 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:20:08,239 basehttp 29064 23600 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:20:08,959 basehttp 29064 2828 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:09,493 basehttp 29064 23600 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:20:09,866 basehttp 29064 27972 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:10,274 basehttp 29064 23600 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:12,628 basehttp 29064 23600 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:20:12,650 basehttp 29064 23600 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:20:12,714 basehttp 29064 2828 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:20:12,991 basehttp 29064 27972 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:13,083 basehttp 29064 2828 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:20:13,294 basehttp 29064 23600 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:13,869 basehttp 29064 2828 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:37,704 basehttp 29064 28480 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:20:37,775 basehttp 29064 28480 "GET /api/notifications/ HTTP/1.1" 200 325
+INFO 2025-07-14 04:20:37,938 basehttp 29064 28480 "GET /api/swaps/sent/ HTTP/1.1" 200 3555
+INFO 2025-07-14 04:20:39,086 basehttp 29064 28480 "GET /api/swaps/received/ HTTP/1.1" 200 23791
+INFO 2025-07-14 04:20:39,101 basehttp 29064 33360 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:39,360 basehttp 29064 33360 "GET /api/users/me/ HTTP/1.1" 200 1765
+INFO 2025-07-14 04:20:39,716 basehttp 29064 28480 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:20:40,251 basehttp 29064 33360 "GET /api/users/ HTTP/1.1" 200 22024
+WARNING 2025-07-14 04:20:52,600 log 29064 33360 Unauthorized: /api/auth/login/
+WARNING 2025-07-14 04:20:52,600 basehttp 29064 33360 "POST /api/auth/login/ HTTP/1.1" 401 37
+INFO 2025-07-14 04:20:57,346 views 29064 33360 User logged in: admin
+INFO 2025-07-14 04:20:57,346 basehttp 29064 33360 "POST /api/auth/login/ HTTP/1.1" 200 1458
+INFO 2025-07-14 04:20:58,117 basehttp 29064 33360 "GET /api/users/admin_dashboard/ HTTP/1.1" 200 51430
+INFO 2025-07-14 04:20:58,554 basehttp 29064 33360 "GET /api/users/admin_users_detailed/ HTTP/1.1" 200 34530
+INFO 2025-07-14 04:20:59,243 basehttp 29064 33360 "GET /api/swaps/ HTTP/1.1" 200 58835
+INFO 2025-07-14 04:20:59,259 basehttp 29064 33360 "GET /api/notifications/ HTTP/1.1" 200 52
+INFO 2025-07-14 04:22:13,735 basehttp 29064 22640 "GET /api/users/ HTTP/1.1" 200 22024
+INFO 2025-07-14 04:24:42,487 basehttp 29064 25296 "GET /api/users/ HTTP/1.1" 200 22024

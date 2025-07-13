@@ -1,91 +1,97 @@
-# Talent Bridge - Frontend
+# SkillSwap Frontend
 
-A React + TypeScript frontend for the Talent Bridge skill swap platform, built for the Odoo Hackathon 2025.
+A modern React-based frontend for the SkillSwap platform - a peer-to-peer skill exchange application.
 
-## 🚀 Quick Start
+## Features
+
+- **User Authentication**: Secure login and registration system
+- **Profile Management**: Complete user profile with skills, bio, and preferences
+- **Skill Exchange**: Request and manage skill swaps with other users
+- **Admin Panel**: Comprehensive admin interface for platform management
+- **Real-time Notifications**: Stay updated with platform activities
+- **Responsive Design**: Works seamlessly across all devices
+
+## Tech Stack
+
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **Tailwind CSS** for styling
+- **Radix UI** for accessible components
+- **React Router** for navigation
+- **Axios** for API communication
+- **React Query** for data fetching and caching
+
+## Getting Started
 
 ### Prerequisites
 
-- Node.js & npm installed
-- Backend API running on `http://localhost:8000`
+- Node.js 18+ 
+- npm or yarn
 
-### Setup
+### Installation
 
-```sh
-# Install dependencies
-npm install
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-# Start development server
-npm run dev
-```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## 🛠️ Tech Stack
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-- **Vite** - Build tool and dev server
-- **TypeScript** - Type safety
-- **React** - UI framework
-- **shadcn-ui** - UI components
-- **Tailwind CSS** - Styling
+### Available Scripts
 
-## 🔗 Backend Integration
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-This frontend is designed to work with the Django REST API backend. Make sure the backend is running before starting the frontend.
-
-### API Configuration
-
-The frontend expects the backend API to be available at:
-- Development: `http://localhost:8000/api`
-- Production: Configure in environment variables
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
-├── components/
-│   ├── layout/          # Header, Footer components
-│   ├── modals/          # Modal components
-│   ├── pages/           # Page components
-│   ├── profile/         # Profile-related components
-│   └── ui/              # shadcn-ui components
-├── hooks/               # Custom React hooks
-├── lib/                 # Utility functions
-└── pages/               # Route pages
+├── components/          # Reusable UI components
+│   ├── ui/            # Base UI components (shadcn/ui)
+│   ├── layout/        # Layout components
+│   ├── pages/         # Page components
+│   └── modals/        # Modal components
+├── hooks/             # Custom React hooks
+├── lib/               # Utility libraries
+├── pages/             # Main page components
+└── styles/            # Global styles
 ```
 
-## 🧪 Development
+## Development
 
-```sh
-# Start dev server
-npm run dev
+### Adding New Components
 
-# Build for production
-npm run build
+1. Create your component in the appropriate directory
+2. Use the existing UI components from `@/components/ui`
+3. Follow the established patterns for styling and structure
 
-# Preview production build
-npm run preview
+### API Integration
 
-# Lint code
-npm run lint
-```
+- API calls are handled through `@/lib/api`
+- Error handling is centralized in `@/lib/errorHandler`
+- Authentication tokens are managed automatically
 
-## 🚀 Deployment
+### Styling
 
-```sh
-# Build for production
-npm run build
+- Use Tailwind CSS classes for styling
+- Follow the established design system
+- Use CSS variables for theming
 
-# The dist/ folder contains the production build
-```
+## Contributing
 
-## 🔧 Environment Variables
+1. Follow the existing code style
+2. Add appropriate TypeScript types
+3. Test your changes thoroughly
+4. Update documentation as needed
 
-Create a `.env` file for configuration:
+## License
 
-```env
-VITE_API_BASE_URL=http://localhost:8000/api
-VITE_APP_TITLE=Talent Bridge
-```
-
----
-
-**Built for Odoo Hackathon 2025**
+This project is part of the SkillSwap platform.

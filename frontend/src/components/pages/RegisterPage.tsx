@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { validateFormData } from "@/lib/errorHandler";
 
 interface RegisterPageProps {
   onRegister: (data: any) => void;
@@ -23,13 +24,16 @@ interface RegisterPageProps {
 
 export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }: RegisterPageProps) {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    password2: "",
     location: "",
     bio: "",
-    availability: "available",
+    availability: "flexible",
+    is_public: true,
     avatar: null as File | null,
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -39,20 +43,48 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
   const [currentSkillOffered, setCurrentSkillOffered] = useState("");
   const [currentSkillWanted, setCurrentSkillWanted] = useState("");
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+  const [avatarError, setAvatarError] = useState('');
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    if (field === "is_public") {
+      setFormData(prev => ({ ...prev, [field]: value === "true" }));
+    } else {
+      setFormData(prev => ({ ...prev, [field]: value }));
+    }
+    // Clear validation errors when user starts typing
+    setValidationErrors([]);
   };
 
+  // Patch avatar validation to only allow .png, .jpg, .jpeg, .svg
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      // Validate file type
+      const allowedTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/svg+xml'];
+      if (!allowedTypes.includes(file.type)) {
+        setAvatarError('Please select a valid image file (PNG, JPG, JPEG, or SVG)');
+        return;
+      }
+      
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        setAvatarError('File size must be less than 5MB');
+        return;
+      }
+      
       setFormData(prev => ({ ...prev, avatar: file }));
+      setAvatarError('');
+      
       const reader = new FileReader();
       reader.onload = (e) => {
         setAvatarPreview(e.target?.result as string);
       };
       reader.readAsDataURL(file);
+    } else {
+      setFormData(prev => ({ ...prev, avatar: null }));
+      setAvatarPreview(null);
+      setAvatarError('');
     }
   };
 
@@ -78,32 +110,93 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
     setSkillsWanted(prev => prev.filter(s => s !== skill));
   };
 
+  const validateForm = (): string[] => {
+    const errors: string[] = [];
+    
+    // Required fields
+    if (!formData.username.trim()) {
+      errors.push("Username is required");
+    }
+    
+    if (!formData.first_name.trim()) {
+      errors.push("First name is required");
+    }
+    
+    if (!formData.last_name.trim()) {
+      errors.push("Last name is required");
+    }
+    
+    if (!formData.email.trim()) {
+      errors.push("Email is required");
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.push("Please enter a valid email address");
+    }
+    
+    if (!formData.password) {
+      errors.push("Password is required");
+    } else if (formData.password.length < 8) {
+      errors.push("Password must be at least 8 characters long");
+    }
+    
+    if (!formData.password2) {
+      errors.push("Please confirm your password");
+    } else if (formData.password !== formData.password2) {
+      errors.push("Passwords do not match");
+    }
+    
+    if (!formData.location.trim()) {
+      errors.push("Location is required");
+    }
+    
+    if (skillsOffered.length === 0) {
+      errors.push("Please add at least one skill you can offer");
+    }
+    
+    if (avatarError) {
+      errors.push(avatarError);
+    }
+    
+    return errors;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (formData.password !== formData.confirmPassword) {
+    // Clear previous errors
+    setValidationErrors([]);
+    
+    // Validate form
+    const errors = validateForm();
+    if (errors.length > 0) {
+      setValidationErrors(errors);
       return;
     }
 
-    const registrationData = {
+    // Only include avatar if provided (optional field)
+    const registrationData: any = {
       ...formData,
-      skillsOffered,
-      skillsWanted,
-      avatar: avatarPreview, // In real app, this would be uploaded to server
+      skills_offered: skillsOffered,
+      skills_wanted: skillsWanted,
     };
+    if (!formData.avatar) {
+      delete registrationData.avatar;
+    }
 
     onRegister(registrationData);
   };
 
   const isFormValid = () => {
     return (
-      formData.name.trim() &&
+      formData.username.trim() &&
+      formData.first_name.trim() &&
+      formData.last_name.trim() &&
       formData.email.trim() &&
       formData.password &&
-      formData.confirmPassword &&
-      formData.password === formData.confirmPassword &&
+      formData.password2 &&
+      formData.password === formData.password2 &&
       formData.location.trim() &&
-      skillsOffered.length > 0
+      skillsOffered.length > 0 &&
+      !avatarError
     );
   };
 
@@ -119,9 +212,15 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
           </CardHeader>
           
           <CardContent className="space-y-6">
-            {error && (
+            {/* Error Display */}
+            {(error || validationErrors.length > 0) && (
               <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
-                <p className="text-sm text-destructive">{error}</p>
+                <ul className="text-sm text-destructive space-y-1">
+                  {error && <li>• {error}</li>}
+                  {validationErrors.map((validationError, index) => (
+                    <li key={index}>• {validationError}</li>
+                  ))}
+                </ul>
               </div>
             )}
 
@@ -132,7 +231,7 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                 
                 {/* Avatar Upload */}
                 <div className="space-y-2">
-                  <Label>Profile Photo</Label>
+                  <Label>Profile Photo (Optional)</Label>
                   <div className="flex items-center space-x-4">
                     <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center overflow-hidden">
                       {avatarPreview ? (
@@ -144,7 +243,7 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                     <div>
                       <input
                         type="file"
-                        accept="image/*"
+                        accept="image/png,image/jpg,image/jpeg,image/svg+xml"
                         onChange={handleAvatarChange}
                         className="hidden"
                         id="avatar-upload"
@@ -157,18 +256,19 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                       </Button>
                     </div>
                   </div>
+                  {avatarError && <div className="text-xs text-red-500 mt-1">{avatarError}</div>}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
+                    <Label htmlFor="username">Username *</Label>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <Input
-                        id="name"
-                        placeholder="Your full name"
-                        value={formData.name}
-                        onChange={(e) => handleInputChange("name", e.target.value)}
+                        id="username"
+                        placeholder="username"
+                        value={formData.username}
+                        onChange={(e) => handleInputChange("username", e.target.value)}
                         className="pl-10"
                         required
                       />
@@ -176,18 +276,40 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="location">Location</Label>
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        id="location"
-                        placeholder="City, Country"
-                        value={formData.location}
-                        onChange={(e) => handleInputChange("location", e.target.value)}
-                        className="pl-10"
-                        required
-                      />
-                    </div>
+                    <Label htmlFor="first_name">First Name *</Label>
+                    <Input
+                      id="first_name"
+                      placeholder="First name"
+                      value={formData.first_name}
+                      onChange={(e) => handleInputChange("first_name", e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="last_name">Last Name *</Label>
+                    <Input
+                      id="last_name"
+                      placeholder="Last name"
+                      value={formData.last_name}
+                      onChange={(e) => handleInputChange("last_name", e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="location">Location *</Label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      id="location"
+                      placeholder="City, Country"
+                      value={formData.location}
+                      onChange={(e) => handleInputChange("location", e.target.value)}
+                      className="pl-10"
+                      required
+                    />
                   </div>
                 </div>
 
@@ -202,17 +324,36 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label>Availability</Label>
-                  <Select value={formData.availability} onValueChange={(value) => handleInputChange("availability", value)}>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="available">Available for swaps</SelectItem>
-                      <SelectItem value="busy">Busy right now</SelectItem>
-                    </SelectContent>
-                  </Select>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Availability</Label>
+                    <Select value={formData.availability} onValueChange={(value) => handleInputChange("availability", value)}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="weekdays">Weekdays</SelectItem>
+                        <SelectItem value="weekends">Weekends</SelectItem>
+                        <SelectItem value="evenings">Evenings</SelectItem>
+                        <SelectItem value="mornings">Mornings</SelectItem>
+                        <SelectItem value="flexible">Flexible Schedule</SelectItem>
+                        <SelectItem value="busy">Currently Busy</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label>Profile Visibility</Label>
+                    <Select value={formData.is_public ? "public" : "private"} onValueChange={(value) => handleInputChange("is_public", value === "public" ? "true" : "false")}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="public">Public Profile</SelectItem>
+                        <SelectItem value="private">Private Profile</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
               </div>
 
@@ -221,7 +362,7 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                 <h3 className="font-semibold">Account Security</h3>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">Email *</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
@@ -238,7 +379,7 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">Password *</Label>
                     <div className="relative">
                       <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <Input
@@ -263,15 +404,15 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="confirmPassword">Confirm Password</Label>
+                    <Label htmlFor="password2">Confirm Password *</Label>
                     <div className="relative">
                       <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <Input
-                        id="confirmPassword"
+                        id="password2"
                         type={showConfirmPassword ? "text" : "password"}
                         placeholder="Confirm your password"
-                        value={formData.confirmPassword}
-                        onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
+                        value={formData.password2}
+                        onChange={(e) => handleInputChange("password2", e.target.value)}
                         className="pl-10 pr-10"
                         required
                       />
@@ -285,7 +426,7 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                         {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </Button>
                     </div>
-                    {formData.confirmPassword && formData.password !== formData.confirmPassword && (
+                    {formData.password2 && formData.password !== formData.password2 && (
                       <p className="text-sm text-destructive">Passwords do not match</p>
                     )}
                   </div>
@@ -298,7 +439,7 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                 
                 {/* Skills Offered */}
                 <div className="space-y-2">
-                  <Label>Skills I can offer</Label>
+                  <Label>Skills I can offer *</Label>
                   <div className="flex space-x-2">
                     <Input
                       placeholder="e.g., Web Design, Photography, Spanish"
@@ -361,7 +502,7 @@ export function RegisterPage({ onRegister, onNavigateToLogin, isLoading, error }
                   type="submit" 
                   className="w-full" 
                   variant="request"
-                  disabled={isLoading || !isFormValid()}
+                  disabled={isLoading}
                 >
                   {isLoading ? "Creating Account..." : "Create Account"}
                 </Button>

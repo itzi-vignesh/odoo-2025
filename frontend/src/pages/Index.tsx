@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HomePage } from "@/components/pages/HomePage";
@@ -7,187 +7,393 @@ import { RegisterPage } from "@/components/pages/RegisterPage";
 import { ProfilePage } from "@/components/pages/ProfilePage";
 import { RequestsPage } from "@/components/pages/RequestsPage";
 import { AdminPage } from "@/components/pages/AdminPage";
+import { UserProfilePage } from "@/components/pages/UserProfilePage";
 import { useToast } from "@/hooks/use-toast";
+import { 
+  userAPI, 
+  authAPI, 
+  skillAPI, 
+  swapAPI, 
+  ratingAPI, 
+  notificationAPI,
+  adminAPI
+} from "@/lib/api";
+import { 
+  handleAsyncOperation, 
+  parseApiError, 
+  logError, 
+  getUserFriendlyMessage,
+  retryOperation 
+} from "@/lib/errorHandler";
+
+// Utility to normalize user fields from backend
+function normalizeUser(user) {
+  // Handle name properly
+  let name = user.name;
+  if (!name) {
+    const firstName = user.first_name || '';
+    const lastName = user.last_name || '';
+    if (firstName || lastName) {
+      name = `${firstName} ${lastName}`.trim();
+    } else {
+      name = user.username || 'User';
+    }
+  }
+
+  return {
+    ...user,
+    name: name,
+    skillsOffered: user.skillsOffered || user.skills_offered || [],
+    skillsWanted: user.skillsWanted || user.skills_wanted || [],
+    isPublic: user.isPublic !== undefined ? user.isPublic : user.is_public,
+    totalSwaps: user.totalSwaps !== undefined ? user.totalSwaps : user.total_completed_swaps,
+    rating: user.rating || 0,
+    badges: user.badges || [],
+    avatar: user.avatar,
+    location: user.location || '',
+    availability: user.availability || 'flexible',
+    role: user.role || 'user',
+    id: user.id,
+    email: user.email,
+    bio: user.bio || '',
+  };
+}
+// Utility to normalize swap fields
+function normalizeSwap(swap) {
+  return {
+    ...swap,
+    fromUser: swap.fromUser || swap.from_user,
+    toUser: swap.toUser || swap.to_user,
+    offeredSkill: swap.skill_offered?.name || swap.offeredSkill || '',
+    wantedSkill: swap.skill_wanted?.name || swap.wantedSkill || '',
+    status: swap.status,
+    id: swap.id,
+    message: swap.message,
+    createdAt: swap.created_at || swap.createdAt,
+    rated: swap.rated || false,
+  };
+}
 
 const Index = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [swapRequests, setSwapRequests] = useState([]);
+  const [notifications, setNotifications] = useState([]);
+  const [dashboardData, setDashboardData] = useState({});
   const [currentPage, setCurrentPage] = useState("home");
-  const [currentUser, setCurrentUser] = useState<any>(null);
-  const [darkMode, setDarkMode] = useState(false);
+  const [viewingUserId, setViewingUserId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [availabilityFilter, setAvailabilityFilter] = useState("all");
-  const [notifications, setNotifications] = useState<any[]>([]);
-  const [swapRequests, setSwapRequests] = useState<any[]>([]);
+  const [darkMode, setDarkMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isProfileLoading, setIsProfileLoading] = useState(false);
+  const profileDataLoadedRef = useRef(false);
   const { toast } = useToast();
-
-  // Mock users data - comprehensive skill swap platform dataset
-  const [users] = useState([
-    {
-      id: "1",
-      name: "John Martinez",
-      email: "john@example.com", 
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      location: "San Francisco, CA",
-      rating: 4.8,
-      totalSwaps: 23,
-      skillsOffered: ["UI/UX Design", "Figma", "Adobe Creative Suite", "User Research"],
-      skillsWanted: ["React", "Python", "Data Science", "Guitar"],
-      availability: "available",
-      bio: "Senior UX Designer passionate about creating intuitive digital experiences. Love helping others discover the joy of good design.",
-      badges: ["First Swap", "5-Star Teacher", "Design Guru"],
-      lastActive: "2 hours ago",
-      isPublic: true,
-    },
-    {
-      id: "2", 
-      name: "Sarah Chen",
-      email: "sarah@example.com",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612d7c7?w=150&h=150&fit=crop&crop=face",
-      location: "Seattle, WA",
-      rating: 4.9,
-      totalSwaps: 31,
-      skillsOffered: ["React", "Node.js", "TypeScript", "System Design"],
-      skillsWanted: ["Machine Learning", "Photography", "French", "Cooking"],
-      availability: "available",
-      bio: "Full-stack developer with 8 years experience. I love teaching coding and learning new skills from amazing people.",
-      badges: ["Code Master", "Top Rated", "Community Champion"],
-      lastActive: "1 hour ago",
-      isPublic: true,
-    },
-    {
-      id: "3",
-      name: "Ahmed Hassan", 
-      email: "ahmed@example.com",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-      location: "Dubai, UAE",
-      rating: 4.7,
-      totalSwaps: 18,
-      skillsOffered: ["Digital Marketing", "SEO", "Arabic", "Public Speaking"],
-      skillsWanted: ["Web Development", "Graphic Design", "Video Editing"],
-      availability: "busy",
-      bio: "Marketing strategist and polyglot. I help businesses grow online and love connecting with people from different cultures.",
-      badges: ["Marketing Pro", "Language Master"],
-      lastActive: "3 hours ago",
-      isPublic: true,
-    },
-    {
-      id: "4",
-      name: "Emily Rodriguez",
-      email: "emily@example.com", 
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-      location: "Barcelona, Spain",
-      rating: 4.6,
-      totalSwaps: 15,
-      skillsOffered: ["Spanish", "Guitar", "Photography", "Travel Planning"],
-      skillsWanted: ["Python", "Data Analysis", "Digital Art", "Yoga"],
-      availability: "available",
-      bio: "Travel photographer and music teacher. Born in Mexico, living in Spain. Always excited to share my culture and learn about others!",
-      badges: ["Cultural Ambassador", "Creative Spirit"],
-      lastActive: "30 minutes ago",
-      isPublic: true,
-    },
-    {
-      id: "5",
-      name: "David Kim",
-      email: "david@example.com",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face", 
-      location: "Toronto, Canada",
-      rating: 4.9,
-      totalSwaps: 42,
-      skillsOffered: ["Python", "Machine Learning", "Data Science", "Statistics"],
-      skillsWanted: ["Japanese", "Piano", "Rock Climbing", "Meditation"],
-      availability: "available",
-      bio: "Data scientist at a fintech startup. I believe data can solve world problems, but work-life balance is equally important.",
-      badges: ["Data Wizard", "Swap Legend", "Mentor"],
-      lastActive: "45 minutes ago",
-      isPublic: true,
-    },
-    {
-      id: "6",
-      name: "Luna Andersson",
-      email: "luna@example.com",
-      avatar: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150&h=150&fit=crop&crop=face",
-      location: "Stockholm, Sweden", 
-      rating: 4.8,
-      totalSwaps: 27,
-      skillsOffered: ["Swedish", "Interior Design", "Sustainable Living", "Woodworking"],
-      skillsWanted: ["App Development", "Mandarin", "Pottery", "Vegan Cooking"],
-      availability: "available",
-      bio: "Sustainable design consultant who creates beautiful, eco-friendly spaces. Passionate about minimalism and zero-waste living.",
-      badges: ["Eco Warrior", "Design Pro", "Scandinavian Style"],
-      lastActive: "1 hour ago",
-      isPublic: true,
-    },
-    {
-      id: "7",
-      name: "Carlos Mendoza",
-      email: "carlos@example.com", 
-      avatar: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face",
-      location: "Mexico City, Mexico",
-      rating: 4.5,
-      totalSwaps: 12,
-      skillsOffered: ["Cooking", "Spanish", "Salsa Dancing", "Business Strategy"],
-      skillsWanted: ["German", "3D Modeling", "Investing", "Public Speaking"],
-      availability: "busy",
-      bio: "Chef and restaurant owner. I love sharing the authentic flavors of Mexican cuisine and learning about business from other entrepreneurs.",
-      badges: ["Master Chef", "Business Minded"],
-      lastActive: "4 hours ago",
-      isPublic: true,
-    },
-    {
-      id: "8",
-      name: "Priya Patel",
-      email: "priya@example.com",
-      avatar: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=150&h=150&fit=crop&crop=face",
-      location: "Mumbai, India",
-      rating: 4.7,
-      totalSwaps: 20,
-      skillsOffered: ["Yoga", "Hindi", "Project Management", "Mindfulness"],
-      skillsWanted: ["Graphic Design", "Italian", "Photography", "Blockchain"],
-      availability: "available", 
-      bio: "Certified yoga instructor and agile project manager. I help teams work better together and individuals find inner peace.",
-      badges: ["Wellness Guru", "PM Expert", "Mindful Teacher"],
-      lastActive: "2 hours ago",
-      isPublic: true,
-    },
-    {
-      id: "admin1",
-      name: "Admin User",
-      email: "admin@skillswap.com",
-      avatar: "https://images.unsplash.com/photo-1519713958759-6254243c4a53?w=150&h=150&fit=crop&crop=face",
-      location: "Platform HQ",
-      rating: 5.0,
-      totalSwaps: 0,
-      skillsOffered: ["Platform Management", "Community Building"],
-      skillsWanted: ["Feedback", "Ideas"],
-      availability: "available",
-      bio: "Platform administrator helping create the best skill-sharing experience.",
-      badges: ["Admin", "Community Builder"],
-      lastActive: "Online",
-      isPublic: false,
-      isAdmin: true,
-    }
-  ]);
 
   // Load user data and preferences from localStorage
   useEffect(() => {
-    const savedUser = localStorage.getItem("skillswap_user");
     const savedDarkMode = localStorage.getItem("skillswap_darkMode");
-    const savedNotifications = localStorage.getItem("skillswap_notifications");
-    const savedRequests = localStorage.getItem("skillswap_requests");
+    const token = localStorage.getItem("accessToken");
 
-    if (savedUser) {
-      setCurrentUser(JSON.parse(savedUser));
-    }
     if (savedDarkMode) {
       setDarkMode(JSON.parse(savedDarkMode));
     }
-    if (savedNotifications) {
-      setNotifications(JSON.parse(savedNotifications));
-    }
-    if (savedRequests) {
-      setSwapRequests(JSON.parse(savedRequests));
+    
+    // If there's a token, try to load the current user
+    if (token) {
+      loadCurrentUser();
+    } else {
+      // Load public users for non-authenticated users
+      loadUsers();
     }
   }, []);
+
+  // Load profile data for current user
+  const loadProfileData = useCallback(async () => {
+    if (!currentUser?.id) return;
+    
+    console.log('Loading profile data for user:', currentUser.id);
+    setIsProfileLoading(true);
+    const { data, error } = await handleAsyncOperation(
+      async () => {
+        const response = await userAPI.getCurrentUser();
+        console.log('Backend response for profile data:', response.data);
+        return response.data;
+      },
+      (error) => {
+        logError(error, 'loadProfileData');
+        toast({
+          title: "Failed to load profile",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      setIsProfileLoading(false);
+      return;
+    }
+
+    console.log('Profile data loaded:', data);
+    console.log('Skills offered from backend:', data.skills_offered);
+    console.log('Skills wanted from backend:', data.skills_wanted);
+    setCurrentUser(data);
+    setIsProfileLoading(false);
+  }, [currentUser?.id]);
+
+  // Load current user from API
+  const loadCurrentUser = async () => {
+    console.log('Loading current user...');
+    const { data, error } = await handleAsyncOperation(
+      async () => {
+        const response = await userAPI.getCurrentUser();
+        return response.data;
+      },
+      (error) => {
+        logError(error, 'loadCurrentUser');
+        // Token might be expired, clear it
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+      }
+    );
+
+    if (error) {
+      console.error("Failed to load user data", error);
+      return;
+    }
+
+    console.log('Current user loaded:', data);
+    setCurrentUser(data);
+    // Reset profile data loaded ref when user changes
+    profileDataLoadedRef.current = false;
+    
+    // If user is admin, redirect to admin page and load admin data
+    if (data.role === 'admin') {
+      setCurrentPage("admin");
+      loadAdminData();
+    } else {
+      // Load notifications and swap requests only for regular users
+      loadNotifications();
+      loadSwapRequests();
+      loadUsers();
+    }
+  };
+
+  // Load all users
+  const loadUsers = async () => {
+    const { data, error } = await handleAsyncOperation(
+      async () => {
+        // Use public API for guest users, authenticated API for logged-in users
+        let response;
+        if (localStorage.getItem("accessToken")) {
+          response = await userAPI.getUsers();
+        } else {
+          response = await userAPI.getPublicUsers();
+        }
+        return response.data.results.map(normalizeUser);
+      },
+      (error) => {
+        logError(error, 'loadUsers');
+        toast({
+          title: "Failed to load users",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      // Set empty array if we can't load users
+      setUsers([]);
+      return;
+    }
+
+    setUsers(data);
+  };
+
+  // Load notifications
+  const loadNotifications = async () => {
+    const { data, error } = await handleAsyncOperation(
+      async () => {
+        const response = await notificationAPI.getNotifications();
+        return response.data.results || response.data;
+      },
+      (error) => {
+        logError(error, 'loadNotifications');
+        toast({
+          title: "Failed to load notifications",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      setNotifications([]);
+      return;
+    }
+
+    setNotifications(data);
+  };
+
+  // Load swap requests
+  const loadSwapRequests = async () => {
+    const { data, error } = await handleAsyncOperation(
+      async () => {
+        const sentResponse = await swapAPI.getSentRequests();
+        const receivedResponse = await swapAPI.getReceivedRequests();
+        
+        const allRequests = [
+          ...(sentResponse.data.results || sentResponse.data),
+          ...(receivedResponse.data.results || receivedResponse.data)
+        ];
+        
+        return allRequests.map(normalizeSwap);
+      },
+      (error) => {
+        logError(error, 'loadSwapRequests');
+        toast({
+          title: "Failed to load swap requests",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      setSwapRequests([]);
+      return;
+    }
+
+    setSwapRequests(data);
+  };
+
+  // Clear admin cache and refresh data
+  const clearAdminCache = useCallback(() => {
+    localStorage.removeItem('skillswap_admin_data');
+    console.log('Admin cache cleared');
+  }, []);
+
+  // Load cached admin data if available
+  const loadCachedAdminData = () => {
+    const cachedData = localStorage.getItem('skillswap_admin_data');
+    if (cachedData) {
+      try {
+        const data = JSON.parse(cachedData);
+        const cacheAge = Date.now() - data.timestamp;
+        // Use cached data if it's less than 5 minutes old
+        if (cacheAge < 5 * 60 * 1000) {
+          setUsers(data.users || []);
+          setSwapRequests(data.swaps || []);
+          setNotifications(data.notifications || []);
+          setDashboardData(data.dashboard || {});
+          return true;
+        }
+      } catch (error) {
+        console.error('Failed to parse cached admin data:', error);
+      }
+    }
+    return false;
+  };
+
+  // Load admin data - separate from regular user data
+  const loadAdminData = useCallback(async () => {
+    // Try to load cached data first
+    if (loadCachedAdminData()) {
+      // Refresh data in background
+      setTimeout(() => loadAdminData(), 1000);
+      return;
+    }
+
+    const { data, error } = await handleAsyncOperation(
+      async () => {
+        // Get comprehensive admin dashboard data
+        const dashboardResponse = await adminAPI.getDashboardData();
+        const dashboardData = dashboardResponse.data;
+        
+        // Get detailed user data for admin management (including banned users)
+        const usersResponse = await adminAPI.getDetailedUsers();
+        const users = usersResponse.data.map(normalizeUser);
+        
+        // Get all swap requests for admin monitoring
+        const swapsResponse = await swapAPI.getSwapRequests();
+        const swaps = swapsResponse.data.results.map(normalizeSwap);
+        
+        // Get admin notifications
+        const notificationsResponse = await notificationAPI.getNotifications();
+        const notifications = notificationsResponse.data.results || notificationsResponse.data;
+        
+        return { 
+          dashboard: dashboardData,
+          users, 
+          swaps, 
+          notifications 
+        };
+      },
+      (error) => {
+        logError(error, 'loadAdminData');
+        toast({
+          title: "Failed to load admin data",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      setUsers([]);
+      setSwapRequests([]);
+      setNotifications([]);
+      return;
+    }
+
+    setUsers(data.users);
+    setSwapRequests(data.swaps);
+    setNotifications(data.notifications);
+    setDashboardData(data.dashboard); // Store dashboard data
+    
+    // Cache admin data in localStorage for persistence
+    localStorage.setItem('skillswap_admin_data', JSON.stringify({
+      users: data.users,
+      swaps: data.swaps,
+      notifications: data.notifications,
+      dashboard: data.dashboard,
+      timestamp: Date.now()
+    }));
+  }, []);
+
+  // Effect to load profile data when profile page is accessed
+  useEffect(() => {
+    if (currentPage === "profile" && currentUser?.id && !isProfileLoading && !profileDataLoadedRef.current) {
+      // Only load profile data if we don't have complete data
+      const hasCompleteData = currentUser.name && currentUser.skillsOffered && currentUser.skillsWanted;
+      if (!hasCompleteData) {
+        profileDataLoadedRef.current = true;
+        loadProfileData();
+      }
+    }
+  }, [currentPage, currentUser?.id, isProfileLoading, loadProfileData]);
+
+  // Effect to load admin data when admin page is accessed
+  useEffect(() => {
+    if (currentPage === "admin" && currentUser?.role === 'admin') {
+      // Only load admin data if we don't have it or if it's stale
+      const hasAdminData = users.length > 0 && swapRequests.length > 0;
+      if (!hasAdminData) {
+        clearAdminCache();
+        loadAdminData();
+      }
+    }
+  }, [currentPage, currentUser?.role, users.length, swapRequests.length, loadAdminData]);
+
+  // Effect to load users when user logs in (if not an admin)
+  useEffect(() => {
+    if (currentUser && currentUser.role !== 'admin') {
+      loadUsers();
+    }
+  }, [currentUser]);
 
   // Apply dark mode
   useEffect(() => {
@@ -201,158 +407,339 @@ const Index = () => {
 
   // Navigation handler
   const handleNavigate = (page: string) => {
-    setCurrentPage(page);
+    // If user is admin, restrict them to admin-only pages
+    if (currentUser?.role === 'admin') {
+      if (page === 'admin' || page === 'login') {
+        setCurrentPage(page);
+      } else {
+        toast({
+          title: "Access restricted",
+          description: "Admin users can only access the admin panel.",
+        });
+        return;
+      }
+    } else {
+      // Regular navigation for normal users
+      setCurrentPage(page);
+    }
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Authentication handlers
-  const handleLogin = (email: string, password: string) => {
-    // Mock authentication logic
-    const user = users.find(u => u.email === email);
-    if (user) {
-      setCurrentUser(user);
-      localStorage.setItem("skillswap_user", JSON.stringify(user));
-      setCurrentPage("home");
-      toast({
-        title: "Welcome back!",
-        description: `Logged in as ${user.name}`,
-      });
+  const handleLogin = async (email: string, password: string) => {
+    setIsLoading(true);
+    setError(null);
+    
+    const { data, error } = await handleAsyncOperation(
+      async () => {
+        const response = await authAPI.login(email, password);
+        return response;
+      },
+      (error) => {
+        logError(error, 'handleLogin');
+        setError(getUserFriendlyMessage(error));
+        toast({ 
+          title: 'Login failed', 
+          description: getUserFriendlyMessage(error), 
+          variant: 'destructive' 
+        });
+      }
+    );
+
+    if (error) {
+      setIsLoading(false);
+      return;
+    }
+
+    // Store tokens
+    if (data.data && (data.data.access || data.data.access_token)) {
+      localStorage.setItem("accessToken", data.data.access || data.data.access_token);
+      localStorage.setItem("refreshToken", data.data.refresh);
+      setCurrentUser(data.data.user);
+      
+      // Redirect admin users to admin page, regular users to home page
+      if (data.data.user && data.data.user.role === 'admin') {
+        setCurrentPage("admin");
+        toast({
+          title: "Welcome, Admin!",
+          description: "Accessing admin panel for platform management.",
+        });
+      } else {
+        setCurrentPage("home");
+        toast({
+          title: "Welcome back!",
+          description: "Successfully logged in to SkillSwap.",
+        });
+      }
     } else {
-      toast({
-        title: "Login failed",
-        description: "User not found. Try one of the demo accounts.",
-        variant: "destructive",
+      setError("Invalid response from server");
+      toast({ 
+        title: 'Login failed', 
+        description: "Invalid response from server", 
+        variant: 'destructive' 
       });
     }
+    
+    setIsLoading(false);
   };
 
-  const handleRegister = (data: any) => {
-    // Mock registration logic
-    const newUser = {
-      id: `user_${Date.now()}`,
-      ...data,
-      rating: 0,
-      totalSwaps: 0,
-      badges: ["New Member"],
-      lastActive: "Just now",
-      isPublic: true,
-    };
+  const handleRegister = async (data: any) => {
+    setIsLoading(true);
+    setError(null);
     
-    setCurrentUser(newUser);
-    localStorage.setItem("skillswap_user", JSON.stringify(newUser));
-    setCurrentPage("home");
-    toast({
-      title: "Account created!",
-      description: "Welcome to SkillSwap! Start exploring skills to learn.",
-    });
+    const { data: responseData, error } = await handleAsyncOperation(
+      async () => {
+        // Build payload with all required fields
+        const payload = {
+          username: data.username || data.email,
+          email: data.email,
+          password: data.password,
+          password2: data.password2 || data.password,
+          first_name: data.first_name || data.firstName || '',
+          last_name: data.last_name || data.lastName || '',
+          bio: data.bio || '',
+          location: data.location || '',
+          avatar: data.avatar || '',
+          availability: data.availability || 'flexible',
+          is_public: data.is_public !== undefined ? data.is_public : true,
+          skills_offered: data.skills_offered || data.skillsOffered || [],
+          skills_wanted: data.skills_wanted || data.skillsWanted || [],
+        };
+        
+        console.log('Registration payload:', payload);
+        const response = await authAPI.register(payload);
+        console.log('Registration response:', response);
+        return response;
+      },
+      (error) => {
+        logError(error, 'handleRegister');
+        setError(getUserFriendlyMessage(error));
+        toast({ 
+          title: 'Registration failed', 
+          description: getUserFriendlyMessage(error), 
+          variant: 'destructive' 
+        });
+      }
+    );
+
+    if (error) {
+      setIsLoading(false);
+      return;
+    }
+
+    localStorage.setItem("accessToken", responseData.data.access);
+    localStorage.setItem("refreshToken", responseData.data.refresh);
+    setCurrentUser(responseData.data.user);
+    
+    // Redirect admin users to admin page, regular users to home page
+    if (responseData.data.user && responseData.data.user.role === 'admin') {
+      setCurrentPage("admin");
+      toast({
+        title: "Admin account created!",
+        description: "Welcome to the admin panel for platform management.",
+      });
+    } else {
+      setCurrentPage("home");
+      toast({
+        title: "Account created!",
+        description: "Welcome to SkillSwap! Start exploring skills to learn.",
+      });
+    }
+    
+    setIsLoading(false);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("skillswap_admin_data"); // Clear admin data cache
     setCurrentUser(null);
-    localStorage.removeItem("skillswap_user");
-    setCurrentPage("home");
-    toast({
-      title: "Logged out",
-      description: "Thanks for using SkillSwap!",
-    });
+    setUsers([]);
+    setSwapRequests([]);
+    setNotifications([]);
+    setDashboardData({});
+    setCurrentPage("login");
   };
 
   // Skill swap request handler
   const handleRequestSwap = async (data: any) => {
-    const newRequest = {
-      id: `req_${Date.now()}`,
-      ...data,
-      fromUserId: currentUser.id,
-      fromUser: currentUser,
-      toUser: users.find(u => u.id === data.targetUserId),
-      status: "pending",
-      createdAt: new Date().toISOString(),
-    };
+    // Check if user has permission to make swap requests
+    if (!currentUser) {
+      toast({
+        title: "Login required",
+        description: "Please log in to request skill swaps",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Admin users shouldn't create swap requests
+    if (currentUser.role === 'admin') {
+      toast({
+        title: "Feature unavailable",
+        description: "Admin users cannot create swap requests",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Guest users shouldn't create swap requests
+    if (currentUser.role === 'guest') {
+      toast({
+        title: "Feature unavailable",
+        description: "Guest users cannot request swaps. Please register for a full account.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    const { error } = await handleAsyncOperation(
+      async () => {
+        const requestData = {
+          to_user_id: parseInt(data.targetUserId),
+          skill_offered_name: data.offeredSkill,
+          skill_wanted_name: data.wantedSkill,
+          message: data.message,
+        };
+        
+        await swapAPI.createSwapRequest(requestData);
+      },
+      (error) => {
+        logError(error, 'handleRequestSwap');
+        toast({
+          title: "Request failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
 
-    const updatedRequests = [...swapRequests, newRequest];
-    setSwapRequests(updatedRequests);
-    localStorage.setItem("skillswap_requests", JSON.stringify(updatedRequests));
-
-    // Add notification for target user (mock)
-    const newNotification = {
-      id: `notif_${Date.now()}`,
-      title: "New Swap Request",
-      message: `${currentUser.name} wants to swap skills with you!`,
-      time: "Just now",
-      read: false,
-      type: "swap_request",
-      requestId: newRequest.id,
-    };
-
-    const updatedNotifications = [...notifications, newNotification];
-    setNotifications(updatedNotifications);
-    localStorage.setItem("skillswap_notifications", JSON.stringify(updatedNotifications));
-
+    if (error) {
+      return;
+    }
+    
+    // Refresh swap requests
+    loadSwapRequests();
+    
     toast({
       title: "Request sent!",
-      description: `Your swap request has been sent to ${newRequest.toUser.name}`,
+      description: `Your swap request has been sent successfully`,
     });
   };
 
   const handleViewProfile = (userId: string) => {
-    // For demo, just show a toast - in real app would navigate to profile view
-    const user = users.find(u => u.id === userId);
+    // Track the userId being viewed
+    setViewingUserId(userId);
+    
+    // Guest users can view public profiles, but with limited details
+    // Regular users can view detailed profiles
+    setCurrentPage("user-profile");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleUpdateProfile = async (data: any) => {
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await userAPI.updateProfile(data);
+      },
+      (error) => {
+        logError(error, 'handleUpdateProfile');
+        toast({
+          title: "Update failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      return;
+    }
+    
+    // Refresh user data
+    loadCurrentUser();
+    
     toast({
-      title: "Profile View",
-      description: `Viewing ${user?.name}'s profile (feature coming soon)`,
+      title: "Profile updated!",
+      description: "Your changes have been saved.",
     });
   };
 
-  const handleUpdateProfile = (data: any) => {
-    if (currentUser) {
-      const updatedUser = { ...currentUser, ...data };
-      setCurrentUser(updatedUser);
-      localStorage.setItem("skillswap_user", JSON.stringify(updatedUser));
+  const handleUpdateRequest = async (requestId: string, status: string) => {
+    // Admin users shouldn't update swap requests in the normal flow
+    if (currentUser?.role === 'admin') {
       toast({
-        title: "Profile updated!",
-        description: "Your changes have been saved.",
+        title: "Feature unavailable",
+        description: "Admin users cannot update swap requests in this view",
+        variant: "destructive",
       });
+      return;
     }
-  };
-
-  const handleUpdateRequest = (requestId: string, status: string) => {
-    const updatedRequests = swapRequests.map(req =>
-      req.id === requestId ? { ...req, status } : req
-    );
-    setSwapRequests(updatedRequests);
-    localStorage.setItem("skillswap_requests", JSON.stringify(updatedRequests));
     
-    const request = swapRequests.find(r => r.id === requestId);
-    if (request) {
-      const actionText = status === 'accepted' ? 'accepted' : status === 'rejected' ? 'rejected' : 'completed';
-      toast({
-        title: `Request ${actionText}!`,
-        description: `Swap request has been ${actionText}.`,
-      });
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await swapAPI.updateSwapRequest(parseInt(requestId), { status });
+      },
+      (error) => {
+        logError(error, 'handleUpdateRequest');
+        toast({
+          title: "Update failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
 
-      // Add notification for the other user
-      const newNotification = {
-        id: `notif_${Date.now()}`,
-        title: `Request ${actionText.charAt(0).toUpperCase() + actionText.slice(1)}`,
-        message: `Your swap request has been ${actionText}!`,
-        time: "Just now",
-        read: false,
-        type: "request_update",
-        requestId: requestId,
-      };
-
-      const updatedNotifications = [...notifications, newNotification];
-      setNotifications(updatedNotifications);
-      localStorage.setItem("skillswap_notifications", JSON.stringify(updatedNotifications));
+    if (error) {
+      return;
     }
+    
+    // Refresh swap requests
+    loadSwapRequests();
+    
+    const actionText = status === 'accepted' ? 'accepted' : status === 'rejected' ? 'rejected' : 'completed';
+    toast({
+      title: `Request ${actionText}!`,
+      description: `Swap request has been ${actionText}.`,
+    });
   };
 
-  const handleSubmitRating = (requestId: string, rating: number, feedback: string) => {
-    const updatedRequests = swapRequests.map(req =>
-      req.id === requestId ? { ...req, rated: true, rating, feedback } : req
+  const handleSubmitRating = async (requestId: string, score: number, feedback: string) => {
+    // Admin users shouldn't submit ratings
+    if (currentUser?.role === 'admin') {
+      toast({
+        title: "Feature unavailable",
+        description: "Admin users cannot submit ratings",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await ratingAPI.createRating({
+          swap_request_id: parseInt(requestId),
+          score,
+          feedback
+        });
+      },
+      (error) => {
+        logError(error, 'handleSubmitRating');
+        toast({
+          title: "Rating failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
     );
-    setSwapRequests(updatedRequests);
-    localStorage.setItem("skillswap_requests", JSON.stringify(updatedRequests));
+
+    if (error) {
+      return;
+    }
+    
+    // Refresh swap requests
+    loadSwapRequests();
     
     toast({
       title: "Rating submitted!",
@@ -360,28 +747,242 @@ const Index = () => {
     });
   };
 
-  const handleDeleteUser = (userId: string) => {
-    // For demo - in real app would require backend API
-    toast({
-      title: "User deleted",
-      description: "User has been removed from the platform.",
-    });
-  };
-
-  const handleToggleUserVisibility = (userId: string) => {
-    // For demo - in real app would require backend API
-    toast({
-      title: "User visibility updated",
-      description: "User visibility status has been changed.",
-    });
-  };
-
-  const handleMarkNotificationRead = (notificationId: string) => {
-    const updatedNotifications = notifications.map(n =>
-      n.id === notificationId ? { ...n, read: true } : n
+  // Admin handler: Delete user 
+  const handleDeleteUser = async (userId: string) => {
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await adminAPI.updateUser(parseInt(userId), { is_active: false });
+      },
+      (error) => {
+        logError(error, 'handleDeleteUser');
+        toast({
+          title: "Delete failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
     );
-    setNotifications(updatedNotifications);
-    localStorage.setItem("skillswap_notifications", JSON.stringify(updatedNotifications));
+
+    if (error) {
+      return;
+    }
+    
+    // Update the users list by removing the deleted user
+    setUsers(prev => prev.filter(user => user.id !== userId));
+    
+    toast({
+      title: "User deactivated",
+      description: "User has been successfully deactivated from the platform.",
+    });
+  };
+  
+  // Admin handler: Ban user
+  const handleBanUser = async (userId: string) => {
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await adminAPI.banUser(parseInt(userId));
+      },
+      (error) => {
+        logError(error, 'handleBanUser');
+        toast({
+          title: "Ban failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      return;
+    }
+    
+    // Refresh admin data to get updated user list
+    loadAdminData();
+    
+    toast({
+      title: "User banned",
+      description: "User has been successfully banned from the platform for policy violations.",
+    });
+  };
+
+  // Admin handler: Unban user
+  const handleUnbanUser = async (userId: string) => {
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await adminAPI.unbanUser(parseInt(userId));
+      },
+      (error) => {
+        logError(error, 'handleUnbanUser');
+        toast({
+          title: "Unban failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      return;
+    }
+    
+    // Refresh admin data to get updated user list
+    loadAdminData();
+    
+    toast({
+      title: "User unbanned",
+      description: "User has been successfully unbanned and can now access the platform.",
+    });
+  };
+
+  // Admin handler: Toggle user visibility
+  const handleToggleUserVisibility = async (userId: string) => {
+    const user = users.find(u => u.id === userId);
+    if (!user) return;
+    
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await adminAPI.updateUser(parseInt(userId), { is_public: !user.isPublic });
+      },
+      (error) => {
+        logError(error, 'handleToggleUserVisibility');
+        toast({
+          title: "Update failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      return;
+    }
+    
+    // Update the users list
+    setUsers(prev => prev.map(user => 
+      user.id === userId ? { ...user, isPublic: !user.isPublic } : user
+    ));
+    
+    toast({
+      title: "User updated",
+      description: `User profile is now ${!user.isPublic ? 'public' : 'private'}.`,
+    });
+  };
+  
+  // Admin handler: Reject inappropriate skill
+  const handleRejectSkill = async (skillId: string, skillName: string) => {
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await adminAPI.rejectSkill(parseInt(skillId));
+      },
+      (error) => {
+        logError(error, 'handleRejectSkill');
+        toast({
+          title: "Rejection failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      return;
+    }
+    
+    // Refresh admin data
+    loadAdminData();
+    
+    toast({
+      title: "Skill rejected!",
+      description: `"${skillName}" has been rejected and removed from the platform.`,
+    });
+  };
+  
+  // Admin handler: Send platform-wide message
+  const handleSendPlatformMessage = async (data: { title: string, message: string, type: string }) => {
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await adminAPI.sendPlatformMessage(data);
+      },
+      (error) => {
+        logError(error, 'handleSendPlatformMessage');
+        toast({
+          title: "Message failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      return;
+    }
+    
+    toast({
+      title: "Message sent!",
+      description: "Platform message has been broadcast to all users.",
+    });
+  };
+  
+  // Admin handler: Download reports
+  const handleDownloadReport = async (reportType: string) => {
+    const { error } = await handleAsyncOperation(
+      async () => {
+        const response = await adminAPI.downloadReport(reportType);
+        
+        // Create download link
+        const blob = new Blob([response.data], { 
+          type: 'text/csv' 
+        });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${reportType}_report.csv`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      },
+      (error) => {
+        logError(error, 'handleDownloadReport');
+        toast({
+          title: "Download failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      return;
+    }
+    
+    toast({
+      title: "Report downloaded!",
+      description: `${reportType} report has been downloaded successfully.`,
+    });
+  };
+
+  const handleMarkNotificationRead = async (notificationId: string) => {
+    const { error } = await handleAsyncOperation(
+      async () => {
+        await notificationAPI.markAsRead(parseInt(notificationId));
+      },
+      (error) => {
+        logError(error, 'handleMarkNotificationRead');
+        toast({
+          title: "Update failed",
+          description: getUserFriendlyMessage(error),
+          variant: "destructive",
+        });
+      }
+    );
+
+    if (error) {
+      return;
+    }
+    
+    // Refresh notifications
+    loadNotifications();
   };
 
   const handleToggleDarkMode = () => {
@@ -396,88 +997,180 @@ const Index = () => {
         <LoginPage
           onLogin={handleLogin}
           onNavigateToRegister={() => setCurrentPage("register")}
+          isLoading={isLoading}
+          error={error}
         />
       );
     }
-    
+
     if (currentPage === "register") {
       return (
         <RegisterPage
           onRegister={handleRegister}
           onNavigateToLogin={() => setCurrentPage("login")}
+          isLoading={isLoading}
+          error={error}
         />
       );
     }
 
-    if (currentPage === "profile") {
-      return (
-        <ProfilePage
-          user={currentUser}
-          onBack={() => setCurrentPage("home")}
-          onSave={handleUpdateProfile}
-        />
-      );
-    }
+    // For pages with header/footer
+    let pageContent;
 
-    if (currentPage === "requests") {
-      return (
-        <RequestsPage
-          user={currentUser}
-          onBack={() => setCurrentPage("home")}
-          requests={swapRequests}
-          onUpdateRequest={handleUpdateRequest}
-          onSubmitRating={handleSubmitRating}
-        />
-      );
-    }
-
-    if (currentPage === "admin") {
-      return (
-        <AdminPage
-          user={currentUser}
-          onBack={() => setCurrentPage("home")}
-          users={users}
-          requests={swapRequests}
-          onDeleteUser={handleDeleteUser}
-          onToggleUserVisibility={handleToggleUserVisibility}
-        />
-      );
-    }
-
-    // Pages with header/footer (home and others)
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Header
-          user={currentUser}
-          onLogin={() => setCurrentPage("login")}
-          onLogout={handleLogout}
-          darkMode={darkMode}
-          onToggleDarkMode={handleToggleDarkMode}
-          currentPage={currentPage}
-          onNavigate={handleNavigate}
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-          availabilityFilter={availabilityFilter}
-          onAvailabilityFilterChange={setAvailabilityFilter}
-          notifications={notifications}
-          onMarkNotificationRead={handleMarkNotificationRead}
-        />
-        <main className="flex-1 container mx-auto px-4 py-8">
+    switch (currentPage) {
+      case "home":
+        // If the current user is an admin, redirect them to the admin page
+        if (currentUser?.role === 'admin') {
+          setCurrentPage("admin");
+          return renderCurrentPage();
+        }
+        
+        pageContent = (
           <HomePage
-            users={users}
+            users={users.filter(u => u.role !== 'admin')} // Filter out admin users
             currentUser={currentUser}
             searchTerm={searchTerm}
             availabilityFilter={availabilityFilter}
             onRequestSwap={handleRequestSwap}
             onViewProfile={handleViewProfile}
+            onNavigate={handleNavigate}
+            isAuthenticated={!!currentUser}
           />
-        </main>
+        );
+        break;
+      case "profile":
+        // Admin users shouldn't access regular user profiles
+        if (currentUser?.role === 'admin') {
+          setCurrentPage("admin");
+          return renderCurrentPage();
+        }
+        
+        // If no current user, show login prompt
+        if (!currentUser) {
+          setCurrentPage("login");
+          return renderCurrentPage();
+        }
+        
+        // Debug: Log the current user data being passed to ProfilePage
+        console.log("Rendering ProfilePage with user:", currentUser);
+        console.log("User skills offered:", currentUser.skillsOffered || currentUser.skills_offered);
+        console.log("User skills wanted:", currentUser.skillsWanted || currentUser.skills_wanted);
+        
+        // Show loading state while fetching profile data
+        if (isProfileLoading) {
+          pageContent = (
+            <div className="min-h-screen flex items-center justify-center">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                <p>Loading profile data...</p>
+              </div>
+            </div>
+          );
+        } else {
+          pageContent = (
+            <ProfilePage
+              user={currentUser}
+              onBack={() => handleNavigate("home")}
+              onSave={handleUpdateProfile}
+            />
+          );
+        }
+        break;
+      case "requests":
+        // Admin users shouldn't access regular user requests
+        if (currentUser?.role === 'admin') {
+          setCurrentPage("admin");
+          return renderCurrentPage();
+        }
+        
+        pageContent = (
+          <RequestsPage
+            user={currentUser}
+            onBack={() => handleNavigate("home")}
+            requests={swapRequests}
+            onUpdateRequest={handleUpdateRequest}
+            onSubmitRating={handleSubmitRating}
+          />
+        );
+        break;
+      case "user-profile":
+        // Admin users shouldn't access user profiles in the normal view
+        if (currentUser?.role === 'admin') {
+          setCurrentPage("admin");
+          return renderCurrentPage();
+        }
+        
+        const viewingUser = users.find(u => u.id === viewingUserId);
+        pageContent = (
+          <UserProfilePage
+            user={viewingUser}
+            currentUser={currentUser}
+            onBack={() => handleNavigate("home")}
+            onRequestSwap={handleRequestSwap}
+          />
+        );
+        break;
+      case "admin":
+        // Only admin users can access admin page
+        if (currentUser?.role !== 'admin') {
+          setCurrentPage("home");
+          return renderCurrentPage();
+        }
+        
+        pageContent = (
+          <AdminPage
+            user={currentUser}
+            onBack={() => handleNavigate("home")}
+            users={users.filter(u => u.role !== 'admin')} // Filter out admin users from the list but include banned users
+            requests={swapRequests}
+            dashboard={dashboardData}
+            onDeleteUser={handleDeleteUser}
+            onBanUser={handleBanUser}
+            onUnbanUser={handleUnbanUser}
+            onToggleUserVisibility={handleToggleUserVisibility}
+            onRejectSkill={handleRejectSkill}
+            onSendPlatformMessage={handleSendPlatformMessage}
+            onDownloadReport={handleDownloadReport}
+          />
+        );
+        break;
+      default:
+        // For admin users, redirect to admin page for any unknown route
+        if (currentUser?.role === 'admin') {
+          setCurrentPage("admin");
+          return renderCurrentPage();
+        }
+        pageContent = <div>Page not found</div>;
+    }
+
+    return (
+      <>
+        <Header
+          user={currentUser}
+          darkMode={darkMode}
+          onToggleDarkMode={handleToggleDarkMode}
+          onNavigate={handleNavigate}
+          onLogin={() => setCurrentPage("login")}
+          onLogout={handleLogout}
+          notifications={notifications}
+          currentPage={currentPage}
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+          availabilityFilter={availabilityFilter}
+          onAvailabilityFilterChange={setAvailabilityFilter}
+          onMarkNotificationRead={handleMarkNotificationRead}
+        />
+        <main className="flex-grow">{pageContent}</main>
         <Footer />
-      </div>
+      </>
     );
   };
 
-  return renderCurrentPage();
+  return (
+    <div className={`flex flex-col min-h-screen ${darkMode ? 'dark' : ''}`}>
+      {renderCurrentPage()}
+    </div>
+  );
 };
 
 export default Index;

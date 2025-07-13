@@ -3,6 +3,7 @@ import { Search, Bell, User, Moon, Sun, Menu, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { isAdmin } from "@/utils/userHelpers";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -76,8 +77,8 @@ export function Header({
             </button>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center space-x-2">
             <Button
               variant={currentPage === 'home' ? 'secondary' : 'ghost'}
               onClick={() => onNavigate('home')}
@@ -86,53 +87,61 @@ export function Header({
             </Button>
             {user && (
               <>
-                <Button
-                  variant={currentPage === 'requests' ? 'secondary' : 'ghost'}
-                  onClick={() => onNavigate('requests')}
-                >
-                  My Requests
-                </Button>
-                <Button
-                  variant={currentPage === 'profile' ? 'secondary' : 'ghost'}
-                  onClick={() => onNavigate('profile')}
-                >
-                  My Profile
-                </Button>
-                {user.isAdmin && (
+                {/* Show regular user navigation only for non-admin users */}
+                {user.role !== 'admin' && (
+                  <>
+                    <Button
+                      variant={currentPage === 'requests' ? 'secondary' : 'ghost'}
+                      onClick={() => onNavigate('requests')}
+                    >
+                      My Requests
+                    </Button>
+                    <Button
+                      variant={currentPage === 'profile' ? 'secondary' : 'ghost'}
+                      onClick={() => onNavigate('profile')}
+                    >
+                      My Profile
+                    </Button>
+                  </>
+                )}
+                {/* Show admin navigation only for admin users */}
+                {user.role === 'admin' && (
                   <Button
                     variant={currentPage === 'admin' ? 'secondary' : 'ghost'}
                     onClick={() => onNavigate('admin')}
                   >
-                    Admin
+                    Admin Panel
                   </Button>
                 )}
               </>
             )}
           </nav>
 
-          {/* Search and Filters */}
-          <div className="flex items-center space-x-2 flex-1 max-w-md mx-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search skills..."
-                value={searchTerm}
-                onChange={(e) => onSearchChange(e.target.value)}
-                className="pl-10"
-              />
+          {/* Search and Filters - Only show for non-admin users */}
+          {user?.role !== 'admin' && (
+            <div className="flex items-center space-x-2 flex-1 max-w-md mx-4">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search skills..."
+                  value={searchTerm}
+                  onChange={(e) => onSearchChange(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+              
+              <Select value={availabilityFilter} onValueChange={onAvailabilityFilterChange}>
+                <SelectTrigger className="w-[120px]">
+                  <SelectValue placeholder="Filter" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Users</SelectItem>
+                  <SelectItem value="available">Available</SelectItem>
+                  <SelectItem value="busy">Busy</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            
-            <Select value={availabilityFilter} onValueChange={onAvailabilityFilterChange}>
-              <SelectTrigger className="w-[120px]">
-                <SelectValue placeholder="Filter" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Users</SelectItem>
-                <SelectItem value="available">Available</SelectItem>
-                <SelectItem value="busy">Busy</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          )}
 
           {/* Right Actions */}
           <div className="flex items-center space-x-2">
@@ -207,13 +216,19 @@ export function Header({
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => onNavigate('profile')}>
-                    My Profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => onNavigate('requests')}>
-                    My Requests
-                  </DropdownMenuItem>
-                  {user.isAdmin && (
+                  {/* Show regular user options only for non-admin users */}
+                  {user.role !== 'admin' && (
+                    <>
+                      <DropdownMenuItem onClick={() => onNavigate('profile')}>
+                        My Profile
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => onNavigate('requests')}>
+                        My Requests
+                      </DropdownMenuItem>
+                    </>
+                  )}
+                  {/* Show admin options only for admin users */}
+                  {user.role === 'admin' && (
                     <DropdownMenuItem onClick={() => onNavigate('admin')}>
                       Admin Panel
                     </DropdownMenuItem>
@@ -248,27 +263,33 @@ export function Header({
               </Button>
               {user && (
                 <>
-                  <Button
-                    variant={currentPage === 'requests' ? 'secondary' : 'ghost'}
-                    onClick={() => {
-                      onNavigate('requests');
-                      setMobileMenuOpen(false);
-                    }}
-                    className="justify-start"
-                  >
-                    My Requests
-                  </Button>
-                  <Button
-                    variant={currentPage === 'profile' ? 'secondary' : 'ghost'}
-                    onClick={() => {
-                      onNavigate('profile');
-                      setMobileMenuOpen(false);
-                    }}
-                    className="justify-start"
-                  >
-                    My Profile
-                  </Button>
-                  {user.isAdmin && (
+                  {/* Show regular user navigation only for non-admin users */}
+                  {user.role !== 'admin' && (
+                    <>
+                      <Button
+                        variant={currentPage === 'requests' ? 'secondary' : 'ghost'}
+                        onClick={() => {
+                          onNavigate('requests');
+                          setMobileMenuOpen(false);
+                        }}
+                        className="justify-start"
+                      >
+                        My Requests
+                      </Button>
+                      <Button
+                        variant={currentPage === 'profile' ? 'secondary' : 'ghost'}
+                        onClick={() => {
+                          onNavigate('profile');
+                          setMobileMenuOpen(false);
+                        }}
+                        className="justify-start"
+                      >
+                        My Profile
+                      </Button>
+                    </>
+                  )}
+                  {/* Show admin navigation only for admin users */}
+                  {user.role === 'admin' && (
                     <Button
                       variant={currentPage === 'admin' ? 'secondary' : 'ghost'}
                       onClick={() => {
